@@ -7,3 +7,4 @@ const { createArticle ,getAllArticles,getArticlesByAuthor} = require("../control
 
 // create initiative router
 const initiativeRouter= express.Router();
+module.exports = initiativeRouter;

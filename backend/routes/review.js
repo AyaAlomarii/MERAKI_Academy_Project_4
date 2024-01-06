@@ -5,7 +5,7 @@ const { createArticle ,getAllArticles,getArticlesByAuthor} = require("../control
 
  */
 
-// create roles router
-const rolesRouter = express.Router();
-
-module.exports = rolesRouter;
+// create users router
+const reviewRouter = express.Router();
+//export it
+module.exports = reviewRouter;
