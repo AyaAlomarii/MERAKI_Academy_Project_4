@@ -23,5 +23,7 @@ userSchema.pre("save",async function(){
 })
 
 
+
+
 //export it 
 module.exports=mongoose.model("User",userSchema)
