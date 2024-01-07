@@ -31,6 +31,7 @@ const initiativeSchema = new mongoose.Schema({
     reviewsSent :[{type:mongoose.Schema.Types.ObjectId,ref:"Review"}],
     category:{type:mongoose.Schema.Types.ObjectId,ref:"Category"},
     donation:{type:mongoose.Schema.Types.ObjectId,ref:"Donation"},
+    
 });
 
 

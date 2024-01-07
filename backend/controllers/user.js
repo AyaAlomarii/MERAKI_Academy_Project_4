@@ -29,9 +29,9 @@ const register=(req,res)=>{
 const login =(req,res)=>{
     const { email,password }= req.body
     userModel.findOne({email})
-    //.populate("role")
+    .populate("role")
     .then(async (result)=>{
-console.log('result here', !result)
+console.log('result here', result)
         if(!result){
             
         
@@ -46,7 +46,10 @@ console.log('result here', !result)
                 res.status( 403).json({
                     success: false,
                     message: " The email doesn’t exist or the password you’ve entered is incorrect",
-                    })
+                    result:result
+                    }
+                    
+                    )
             }else{
                 const options = {
                     expiresIn: "120m"
@@ -57,7 +60,7 @@ console.log('result here', !result)
                     country:result.country,
                     role: result.role
                 }
-                console.log('payload', payload)
+                console.log('payload', payload.role.permissions)
                 const userToken =jwt.sign(payload,process.env.SECRET,options)
                 console.log('userToken', userToken)
                 res.status(200).json({
