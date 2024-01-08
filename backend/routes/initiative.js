@@ -10,7 +10,7 @@ initiativeRouter.use(authentication)
 
 // import functions from controller and middlewares
 
-const { createNewInitiative} = require("../controllers/initiative");
+const { createNewInitiative , getAllInitiative} = require("../controllers/initiative");
 
 
 
@@ -18,6 +18,8 @@ const { createNewInitiative} = require("../controllers/initiative");
 initiativeRouter.post("/",authentication,authorization("create a donation"),createNewInitiative);
 
 
+// endpoint for the GET request (getAllInitiative)
+initiativeRouter.get("/",authentication,getAllInitiative);
 
 
 

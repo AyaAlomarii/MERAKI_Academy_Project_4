@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken"); */
 
 
 
-// 1. this function to create an articles
+// 1. this function to create an Initiative
 
 const createNewInitiative = (req, res) => {
     const {  name,
@@ -68,9 +68,35 @@ const createNewInitiative = (req, res) => {
     })
     };
 
+// 2. this function to gel all Initiative
 
+const getAllInitiative=(req,res)=>{
+    initiativeModel.find({})
+    //re active them when you finish create all schemas
+   // .populate("review")
+ 
+    .populate("category")
+   // .populate("donation")
+    
+    .then((result)=>{
+        res.status(200).json({
+        success: true,
+        message: "All the Initiative",
+        initiative : result,
+        })
+        }).catch((err)=>{
+            console.log(err);
+            res.status(500).json({
+                success: false,
+                message: "Server Error",
+                err: err
+            })
+        })
+
+}
 
 
 module.exports = { 
-    createNewInitiative
+    createNewInitiative,
+    getAllInitiative,
 }; 

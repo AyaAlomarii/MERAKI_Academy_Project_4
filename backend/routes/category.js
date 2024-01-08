@@ -1,11 +1,13 @@
 const express = require("express");
-/* import functions from controller and middlewares
-ex
-const { createArticle ,getAllArticles,getArticlesByAuthor} = require("../controllers/articles");
-
- */
-
 // create users router
 const categoryRouter = express.Router();
+const { createCategory } = require("../controllers/category");
+const authentication=require("../middleware/authentication")
+const authorization=require("../middleware/authorization")
+categoryRouter.use(authentication)
+// endpoint for the POST request(createCategory)
+categoryRouter.post("/",authentication,createCategory)
+
+
 //export it
 module.exports = categoryRouter;
