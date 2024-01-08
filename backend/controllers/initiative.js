@@ -1,4 +1,8 @@
 const initiativeModel=require("../models/initiativeSchema")
+const reviewModel=require("../models/reviewSchema")
+const donationModel=require("../models/donationSchema")
+
+
 /* const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); */
 
@@ -96,7 +100,83 @@ const getAllInitiative=(req,res)=>{
 }
 
 
+ // 1. this function to create NEW Review
+
+const createNewReview =async (req, res) => {
+
+    try{ const {initiativeId}=req.params
+    const { review}= req.body
+
+    const newReview =  new reviewModel({ 
+    review,
+    reviewer:req.token.userId
+})
+    
+   await newReview.save()
+    //find and update
+const result =await initiativeModel.findByIdAndUpdate(initiativeId,{$push:{reviewsSent:newReview}},{
+    new: true
+    })
+//result.comments.push(newComment)
+//await result.save()
+console.log(result);
+res.status(201).json({
+    success: true,
+    message: "Comment created",
+    review: newReview,
+
+    })
+}
+    catch(err){
+    console.log(err);
+    res.status(201).json({
+        success: false,
+        message: "Server Error",
+        err: err
+    })
+    }
+}; 
+
+// 1. this function to create NEW Donation
+
+const createNewDonation =async (req, res) => {
+
+    try{ const {initiativeId}=req.params
+    const { amount}= req.body
+
+    const newDonation =  new donationModel({ 
+        amount,
+        Donor:req.token.userId
+})
+    
+await newDonation.save()
+    //find and update
+const result =await initiativeModel.findByIdAndUpdate(initiativeId,{$push:{donation:newDonation}},{
+    new: true
+    })
+//result.comments.push(newComment)
+//await result.save()
+console.log(result);
+res.status(201).json({
+    success: true,
+    message: " Donation created",
+    review: newDonation,
+
+    })
+}
+    catch(err){
+    console.log(err);
+    res.status(201).json({
+        success: false,
+        message: "Server Error",
+        err: err
+    })
+    }
+}; 
+
 module.exports = { 
     createNewInitiative,
     getAllInitiative,
+    createNewReview,
+    createNewDonation
 }; 
