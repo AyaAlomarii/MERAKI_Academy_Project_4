@@ -3,14 +3,14 @@ const express = require("express");
 const initiativeRouter= express.Router();
 const authentication=require("../middleware/authentication")
 const authorization=require("../middleware/authorization")
-initiativeRouter.use(authentication)
+
 
 
 
 
 // import functions from controller and middlewares
 
-const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation} = require("../controllers/initiative");
+const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation,getAllInitiativeByCategory} = require("../controllers/initiative");
 
 
 
@@ -26,6 +26,7 @@ initiativeRouter.get("/",authentication,getAllInitiative);
 initiativeRouter.post("/:initiativeId/review",authentication,authorization("create a donation") ,createNewReview);
 // endpoint for the create a new donation
 initiativeRouter.post("/:initiativeId/donation",authentication,authorization("create a donation") ,createNewDonation);
-
+// endpoint for the create a new donation
+initiativeRouter.get("/:objectId/category" ,getAllInitiativeByCategory);
 
 module.exports = initiativeRouter;

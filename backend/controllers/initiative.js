@@ -77,10 +77,9 @@ const createNewInitiative = (req, res) => {
 const getAllInitiative=(req,res)=>{
     initiativeModel.find({})
     //re active them when you finish create all schemas
-   // .populate("review")
- 
+    .populate("reviewsSent")
     .populate("category")
-   // .populate("donation")
+    .populate("donation")
     
     .then((result)=>{
         res.status(200).json({
@@ -112,7 +111,7 @@ const createNewReview =async (req, res) => {
     reviewer:req.token.userId
 })
     
-   await newReview.save()
+    await newReview.save()
     //find and update
 const result =await initiativeModel.findByIdAndUpdate(initiativeId,{$push:{reviewsSent:newReview}},{
     new: true
@@ -174,9 +173,44 @@ res.status(201).json({
     }
 }; 
 
+const getAllInitiativeByCategory =(req ,res)=>{
+    const {objectId}=req.params
+    console.log('first', objectId)
+    initiativeModel.find({ category: objectId })
+    .populate("category")
+    .populate("reviewsSent")
+    .populate("donation")
+    .then((result)=>{
+        console.log('result', result)
+        if(!result){
+            
+            return res.status(404).json({
+                success: false,
+                message: `The Initiative with category => ${objectId} not found`,
+                });
+        }else{
+            console.log('result', result)
+            res.status(200).json({
+                success: true,
+                message: `The category ${objectId} `,
+                category: result,
+                });
+        }
+
+    }).catch((err)=>{
+        console.log('err', err)
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+            });
+    })
+}
+
 module.exports = { 
     createNewInitiative,
     getAllInitiative,
     createNewReview,
-    createNewDonation
+    createNewDonation,
+    getAllInitiativeByCategory
 }; 
