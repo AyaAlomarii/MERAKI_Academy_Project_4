@@ -145,7 +145,7 @@ const createNewDonation =async (req, res) => {
 
     const newDonation =  new donationModel({ 
         amount,
-        Donor:req.token.userId
+        donor:req.token.userId
 })
     
 await newDonation.save()
