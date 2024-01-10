@@ -15,7 +15,7 @@ const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation
 
 
 // endpoint for the POST request (createNewInitiative)
-initiativeRouter.post("/",authentication,authorization("create a donation"),createNewInitiative);
+initiativeRouter.post("/",authentication,authorization("create initiative"),createNewInitiative);
 
 
 // endpoint for the GET request (getAllInitiative)
@@ -23,10 +23,10 @@ initiativeRouter.get("/",authentication,getAllInitiative);
 
 
 // endpoint for the create a new Review
-initiativeRouter.post("/:initiativeId/review",authentication,authorization("create a donation") ,createNewReview);
+initiativeRouter.post("/:initiativeId/review",authentication,authorization("create review") ,createNewReview);
 // endpoint for the create a new donation
-initiativeRouter.post("/:initiativeId/donation",authentication,authorization("create a donation") ,createNewDonation);
-// endpoint for the create a new donation
+initiativeRouter.post("/:initiativeId/donation",authentication,authorization("create donation") ,createNewDonation);
+// endpoint for the get All InitiativeByCategory
 initiativeRouter.get("/:objectId/category" ,getAllInitiativeByCategory);
 deleteInitiativeById
 // endpoint for the delete a  review

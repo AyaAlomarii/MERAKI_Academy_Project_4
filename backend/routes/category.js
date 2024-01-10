@@ -6,7 +6,7 @@ const authentication=require("../middleware/authentication")
 const authorization=require("../middleware/authorization")
 categoryRouter.use(authentication)
 // endpoint for the POST request(createCategory)
-categoryRouter.post("/",authentication,createCategory)
+categoryRouter.post("/",authentication,authorization("create category"),createCategory)
 
 
 //export it
