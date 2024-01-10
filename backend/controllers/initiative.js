@@ -207,10 +207,67 @@ const getAllInitiativeByCategory =(req ,res)=>{
     })
 }
 
+
+
+// This function deletes a specific Review by its id
+const deleteReviewById = (req, res) => {
+    const {id}= req.params;
+    reviewModel
+        .findByIdAndDelete(id)
+        .then((result) => {
+        if (!result) {
+        return res.status(404).json({
+            success: false,
+            message: `The review with id => ${id} not found`,
+        });
+        }
+        res.status(200).json({
+            success: true,
+            message: `review deleted`,
+        });
+        })
+        .catch((err) => {
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+        });
+        });
+    };
+
+    
+// This function deletes a specific Review by its id
+const deleteInitiativeById = (req, res) => {
+    const {id}= req.params;
+    initiativeModel
+        .findByIdAndDelete(id)
+        .then((result) => {
+        if (!result) {
+        return res.status(404).json({
+            success: false,
+            message: `The Initiative with id => ${id} not found`,
+        });
+        }
+        res.status(200).json({
+            success: true,
+            message: `Initiative deleted`,
+        });
+        })
+        .catch((err) => {
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+        });
+        });
+    };
+
 module.exports = { 
     createNewInitiative,
     getAllInitiative,
     createNewReview,
     createNewDonation,
-    getAllInitiativeByCategory
+    getAllInitiativeByCategory,
+    deleteReviewById,
+    deleteInitiativeById
 }; 
