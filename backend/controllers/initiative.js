@@ -239,8 +239,9 @@ const deleteReviewById = (req, res) => {
 // This function deletes a specific Review by its id
 const deleteInitiativeById = (req, res) => {
     const {id}= req.params;
-    initiativeModel
+    reviewModel
         .findByIdAndDelete(id)
+        
         .then((result) => {
         if (!result) {
         return res.status(404).json({
@@ -262,6 +263,77 @@ const deleteInitiativeById = (req, res) => {
         });
     };
 
+
+
+    // This function updates Initiative by its id
+const updateInitiativeById = (req, res) => {
+    const {id} = req.params;
+    const filter = req.body;
+    Object.keys(filter).forEach((key) => {
+        filter[key].toString().replaceAll(" ", "") == "" && delete filter[key];
+    });
+    initiativeModel
+        .findByIdAndUpdate({ _id: id }, req.body, { new: true })
+        .then((newInitiative) => {
+        if (!newInitiative) {
+            return res.status(404).json({
+            success: false,
+            message: `The Initiative with id => ${id} not found`,
+            });
+        }
+        res.status(202).json({
+            success: true,
+            message: `Initiative updated`,
+            initiative: newInitiative,
+        });
+        })
+        .catch((err) => {
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+        });
+    });
+    };
+
+
+    
+
+    // This function updates review by its id
+const updateReviewsById = (req, res) => {
+    const {id} = req.params;
+    const filter = req.body;
+    Object.keys(filter).forEach((key) => {
+        filter[key].toString().replaceAll(" ", "") == "" && delete filter[key];
+    });
+    reviewModel
+        .findByIdAndUpdate({ _id: id }, req.body, { new: true })
+        .populate("reviewer")
+        .then((newReview) => {
+        if (!newReview) {
+            return res.status(404).json({
+            success: false,
+            message: `The Review with id => ${id} not found`,
+            });
+        }
+        res.status(202).json({
+            success: true,
+            message: `Review updated`,
+            review: newReview,
+        });
+        })
+        .catch((err) => {
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+        });
+    });
+    };
+
+
+
+
 module.exports = { 
     createNewInitiative,
     getAllInitiative,
@@ -269,5 +341,7 @@ module.exports = {
     createNewDonation,
     getAllInitiativeByCategory,
     deleteReviewById,
-    deleteInitiativeById
+    deleteInitiativeById,
+    updateInitiativeById,
+    updateReviewsById
 }; 

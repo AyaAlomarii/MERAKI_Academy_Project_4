@@ -10,7 +10,7 @@ const authorization=require("../middleware/authorization")
 
 // import functions from controller and middlewares
 
-const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation,getAllInitiativeByCategory,deleteReviewById,deleteInitiativeById} = require("../controllers/initiative");
+const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation,getAllInitiativeByCategory,deleteReviewById,deleteInitiativeById,updateInitiativeById,updateReviewsById} = require("../controllers/initiative");
 
 
 
@@ -34,4 +34,17 @@ initiativeRouter.delete("/:id/review" ,deleteReviewById);
 
 // endpoint for the delete an Initiative By its Id
 initiativeRouter.delete("/:id" ,deleteInitiativeById);
+
+
+// endpoint for the update an Initiative By its Id
+initiativeRouter.put("/:id" ,updateInitiativeById);
+
+// endpoint for the update an Review By its Id
+initiativeRouter.put("/:id/review" ,updateReviewsById);
+
+
+
+
+
+
 module.exports = initiativeRouter;
