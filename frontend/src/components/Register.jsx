@@ -14,7 +14,15 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
+
+
+
+//import Container from '@mui/material/Container';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -33,6 +41,21 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Register() {
+const [UserInfo, setUserInfo] = useState({})
+const [age, setAge] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -64,7 +87,9 @@ export default function Register() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextField onChange={(e)=>{
+                      setUserInfo({...UserInfo,firstName:e.target.value})
+                }}
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -76,6 +101,9 @@ export default function Register() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                onChange={(e)=>{
+                      setUserInfo({...UserInfo,lastName:e.target.value})
+                }}
                   required
                   fullWidth
                   id="lastName"
@@ -86,6 +114,9 @@ export default function Register() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  onChange={(e)=>{
+                      setUserInfo({...UserInfo,email:e.target.value})
+                }}
                   required
                   fullWidth
                   id="email"
@@ -96,6 +127,9 @@ export default function Register() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                onChange={(e)=>{
+                      setUserInfo({...UserInfo,password:e.target.value})
+                }}
                   required
                   fullWidth
                   name="password"
@@ -105,6 +139,61 @@ export default function Register() {
                   autoComplete="new-password"
                 />
               </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                onChange={(e)=>{
+                      setUserInfo({...UserInfo,country:e.target.value})
+                }}
+                required
+                  fullWidth
+                  name="country"
+                  label="country"
+                  type="country"
+                  id="country"
+                  autoComplete="country"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                onChange={(e)=>{
+                      setUserInfo({...UserInfo,age:e.target.value})
+                }}
+                required
+                  fullWidth
+                  name="age"
+                  label="age"
+                  type="age"
+                  id="age"
+                  autoComplete="age"
+                />
+              </Grid>
+              {/* -------- */}
+               <div>
+      <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen}>
+        Open the select
+      </Button>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={age}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+    </div>
+    {/*  */}
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
