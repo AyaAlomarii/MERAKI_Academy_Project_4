@@ -18,7 +18,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-//import Container from '@mui/material/Container';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -39,7 +39,7 @@ const defaultTheme = createTheme();
 export default function Register() {
 const [UserInfo, setUserInfo] = useState({})
 const [messageShow, setMessageShow] = useState({})
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
       
     axios.post(`http://localhost:5000/users/register`,UserInfo).then((res)=>{
     setMessage({
