@@ -1,6 +1,6 @@
 
 import React,{useState} from 'react'
-
+import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,14 +14,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
-
-
-
+import FormLabel from '@mui/material/FormLabel';
 //import Container from '@mui/material/Container';
 function Copyright(props) {
   return (
@@ -36,43 +32,43 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
+
 
 const defaultTheme = createTheme();
 
 export default function Register() {
 const [UserInfo, setUserInfo] = useState({})
-const [age, setAge] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+const [messageShow, setMessageShow] = useState({})
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+      
+    axios.post(`http://localhost:5000/users/register`,UserInfo).then((res)=>{
+    setMessage({
+      messageShow: res.data.message,
+      status:true
+      
+    })
+    
+      console.log('res', res.data.message)
+    
+    
+    }).catch((err)=>{
+      setMessage({
+        messageShow:err.response.data.message,
+        status:false
+      })
+      console.log('err', err)
+  
+    })
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+    <div className="sign-in">
+    <ThemeProvider  theme={defaultTheme}>
+      <Container   component="main" maxWidth="xs" >
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            margin: "auto",
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -167,33 +163,26 @@ const [age, setAge] = React.useState('');
                   autoComplete="age"
                 />
               </Grid>
-              {/* -------- */}
-               <div>
-      <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen}>
-        Open the select
-      </Button>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
-          open={open}
-          onClose={handleClose}
-          onOpen={handleOpen}
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
-    {/*  */}
+              {/* ------- */}
+<Grid item xs={12}>
+                  <FormControl>
+      <FormLabel id="demo-row-radio-buttons-group-label">You are </FormLabel>
+      <RadioGroup
+      onChange={(e)=>{
+        setUserInfo({...UserInfo,role:e.target.value})
+      }}
+        row
+        aria-labelledby="demo-row-radio-buttons-group-label"
+        name="row-radio-buttons-group"
+      >
+        <FormControlLabel value="659e5371d2f8fba730f39709" control={<Radio />} label="Donor" />
+        <FormControlLabel value="659e5291d2f8fba730f39707" control={<Radio />} label="Employee" />
+        <FormControlLabel value="659e53ebd2f8fba730f3970b" control={<Radio />} label="Volunteer" />
+        
+      </RadioGroup>
+    </FormControl>
+    </Grid>
+              {/* --------- */}
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -221,5 +210,6 @@ const [age, setAge] = React.useState('');
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
