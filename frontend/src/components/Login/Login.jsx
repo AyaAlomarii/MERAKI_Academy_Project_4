@@ -1,4 +1,8 @@
 import * as React from 'react';
+import {useState,useContext } from 'react'
+import axios from 'axios'
+
+import { tokenContext } from '../../App';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,15 +34,40 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignIn() {
-    const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-    });
-};
+export default function Login() {
+    const [message, setMessage] = useState({})
+    const [logInInfo, setLogInInfo] = useState({})
+    const {token,setToken,setIsLoggedIn,isLoggedIn}=useContext(tokenContext)
+    const handleSubmit = (e) => {
+     
+        axios.post(`http://localhost:5000/users/login`,logInInfo).then((res)=>{
+    
+        setMessage({
+        messageShow:res.data.message,
+        status:true
+    
+        }) 
+        
+        console.log('res', res.data.message)
+        
+        setToken(res.data.token)
+        localStorage.setItem("token",res.data.token)
+        setIsLoggedIn(true)
+        localStorage.setItem("isLoggedIn",true)
+       // navigate("/dashboard")
+        }).catch((err)=>{
+        setMessage({
+            messageShow:err.response.data.message,
+            status:false
+        }) 
+        localStorage.setItem("isLoggedIn",false)
+        setIsLoggedIn(false)
+        console.log('err', err)
+        })
+    
+            
+        }
+
 
     return (
     <ThemeProvider theme={defaultTheme}>
@@ -60,6 +89,9 @@ export default function SignIn() {
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+            onChange={(e)=>{
+                setLogInInfo({...logInInfo,email:e.target.value})
+                }} 
                 margin="normal"
                 required
                 fullWidth
@@ -70,6 +102,9 @@ export default function SignIn() {
                 autoFocus
             />
             <TextField
+            onChange={(e)=>{
+                setLogInInfo({...logInInfo,password:e.target.value})
+                }}
                 margin="normal"
                 required
                 fullWidth
@@ -103,6 +138,7 @@ export default function SignIn() {
                 </Link>
                 </Grid>
                 </Grid>
+                {<h3 >{message.messageShow}</h3> } 
             </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
