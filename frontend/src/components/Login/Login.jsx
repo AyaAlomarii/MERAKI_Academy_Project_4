@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState,useContext } from 'react'
+import {useState,useContext,useNavigate   } from 'react'
 import axios from 'axios'
 
 import { tokenContext } from '../../App';
@@ -49,7 +49,7 @@ export default function Login() {
         }) 
         
         console.log('res', res.data.message)
-        
+        console.log('first', res.data.token)
         setToken(res.data.token)
         localStorage.setItem("token",res.data.token)
         setIsLoggedIn(true)
@@ -133,7 +133,8 @@ export default function Login() {
                 </Link>
                 </Grid>
                 <Grid item>
-                <Link href="#" variant="body2">
+                    
+                <Link to="/register"  href="/register" variant="body2">
                     {"Don't have an account? Sign Up"}
                 </Link>
                 </Grid>
