@@ -3,7 +3,8 @@ import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime"
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css'
 import Register from './components/Register';
-import Login from "./components/Login/Login"
+import Login from "./components/Login/Login";
+import Dashboard from './components/Dashbored/Dashored';
 export const tokenContext = createContext();
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "")
@@ -17,6 +18,8 @@ function App() {
     <Routes>
     <Route path="/register" element={<Register />} />
     <Route path="/login" element={<Login  />} />
+    <Route path="/dashboard" element={<Dashboard  />} />
+
     </Routes>
     </tokenContext.Provider>
     </>

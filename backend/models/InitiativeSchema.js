@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const initiativeSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
+    img:{type: String, required: true},
     duration: { type: String },
     city: { type: String, required: true },
     currentAmount: { type: Number, required: true},

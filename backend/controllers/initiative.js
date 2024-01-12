@@ -12,6 +12,7 @@ const jwt = require("jsonwebtoken"); */
 
 const createNewInitiative = (req, res) => {
     const {  name,
+        img,
         description,
     duration,
     city,
@@ -36,6 +37,7 @@ const createNewInitiative = (req, res) => {
 
     const newInitiative = new initiativeModel( {  name,
         description,
+        img,
     duration,
     city,
     currentAmount,
