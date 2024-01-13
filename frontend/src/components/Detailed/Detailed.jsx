@@ -4,14 +4,16 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import {useEffect,useState,useContext}from 'react'
 import { tokenContext } from '../../App';
+import Container from "@mui/material/Container";
 
 
 const Detailed = () => {
-    const {allInitiative,setAllInitiative}=useContext(tokenContext)
+    const values =useContext(tokenContext)
+    console.log(values);
   return (
     <>
    <Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         
         <Grid item xs={6}>
         <Grid item xs={6}>
@@ -23,9 +25,9 @@ const Detailed = () => {
         </Grid>
         
         <Grid item xs={6}>
-          4
+       {console.log('allInitiative', allInitiative)}
         </Grid>
-      </Grid>
+      </Grid> */}
     </Box>
     </>
   )
