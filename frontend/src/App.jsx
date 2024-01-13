@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Login from "./components/Login/Login";
 import Dashboard from './components/Dashbored/Dashored';
 import Detailed from './components/Detailed/Detailed';
+import Navbar from "./components/Navbar/Navbar"
 export const tokenContext = createContext();
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "")
@@ -15,12 +16,12 @@ function App() {
   return (
     <>
           <tokenContext.Provider value={{token,setToken,isLoggedIn,setIsLoggedIn,allInitiative,setAllInitiative}}>
-
+<Navbar/>
     <Routes>
     <Route path="/register" element={<Register />} />
     <Route path="/login" element={<Login  />} />
     <Route path="/dashboard" element={<Dashboard  />} />
-    <Route path="/initiativeDetails" element={<Detailed  />} />
+    <Route path="/initiativeDetails" element={<Detailed value={{token,setToken,isLoggedIn,setIsLoggedIn,allInitiative,setAllInitiative}} />} />
     </Routes>
     </tokenContext.Provider>
     </>
