@@ -9,11 +9,11 @@ export const tokenContext = createContext();
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "")
   const [isLoggedIn , setIsLoggedIn ] = useState(localStorage.getItem("isLoggedIn")||false)
-  const [allArticles, setAllArticles] = useState([])
+  const [allInitiative, setAllInitiative] = useState([])
 
   return (
     <>
-          <tokenContext.Provider value={{token,setToken,isLoggedIn,setIsLoggedIn,allArticles,setAllArticles}}>
+          <tokenContext.Provider value={{token,setToken,isLoggedIn,setIsLoggedIn,allInitiative,setAllInitiative}}>
 
     <Routes>
     <Route path="/register" element={<Register />} />

@@ -61,8 +61,8 @@ const createNewInitiative = (req, res) => {
     newInitiative.save().then((result)=>{
         res.status(201).json({
         success: true,
-        message: "Article created",
-        article : result,
+        message: "initiative created",
+        initiative : result,
         })
     }).catch((err)=>{
         console.log(err);

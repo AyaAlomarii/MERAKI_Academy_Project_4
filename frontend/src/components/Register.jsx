@@ -39,10 +39,10 @@ const defaultTheme = createTheme();
 export default function Register() {
 const [UserInfo, setUserInfo] = useState({})
 const [messageShow, setMessageShow] = useState({})
-  const handleSubmit = () => {
-      
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios.post(`http://localhost:5000/users/register`,UserInfo).then((res)=>{
-    setMessage({
+      setMessageShow({
       messageShow: res.data.message,
       status:true
       
@@ -52,7 +52,7 @@ const [messageShow, setMessageShow] = useState({})
     
     
     }).catch((err)=>{
-      setMessage({
+      setMessageShow({
         messageShow:err.response.data.message,
         status:false
       })
