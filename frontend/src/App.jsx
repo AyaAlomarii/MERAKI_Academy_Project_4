@@ -5,6 +5,7 @@ import './App.css'
 import Register from './components/Register';
 import Login from "./components/Login/Login";
 import Dashboard from './components/Dashbored/Dashored';
+import Detailed from './components/Detailed/Detailed';
 export const tokenContext = createContext();
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "")
@@ -19,7 +20,7 @@ function App() {
     <Route path="/register" element={<Register />} />
     <Route path="/login" element={<Login  />} />
     <Route path="/dashboard" element={<Dashboard  />} />
-
+    <Route path="/initiativeDetails" element={<Detailed  />} />
     </Routes>
     </tokenContext.Provider>
     </>

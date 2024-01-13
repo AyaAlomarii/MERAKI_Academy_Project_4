@@ -32,26 +32,6 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -157,8 +137,9 @@ useEffect(() => {
                   
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Link href="/initiativeDetails">
+                    <Button size="small">View</Button></Link>
+                    
                   </CardActions>
                 </Card>
               </Grid>
