@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -7,11 +8,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { tokenContext } from "../../App";
 function Navbar() {
 
 
-  
+  const navigate = useNavigate();
+  const {   setToken,
+    isLoggedIn,
+    setIsLoggedIn, } = useContext(tokenContext);
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -29,7 +34,25 @@ function Navbar() {
         <IconButton sx={{ 
           margin:2,}}>
           <SearchIcon />
+
         </IconButton>
+       
+      
+        <Link href="/dashboard">
+        <Button   sx={{ 
+          margin:2,
+          flex: 1 }} variant="outlined" size="medium">
+          initiatives
+        </Button></Link>
+        {isLoggedIn?<><Link href="">
+          
+          <Button onClick={()=>{
+            localStorage.clear()
+          }} sx={{ 
+          margin:2,
+          flex: 1 }} variant="outlined" size="medium">
+            Log Out
+          </Button></Link></>:<> 
         <Link href="/register">
         <Button  variant="outlined" size="medium">
           Sign up
@@ -39,7 +62,8 @@ function Navbar() {
           margin:2,
           flex: 1 }} variant="outlined" size="medium">
           Sign In
-        </Button></Link>
+        </Button></Link></>}
+       
         <IconButton
             size="large"
             edge="start"

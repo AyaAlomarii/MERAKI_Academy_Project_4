@@ -42,11 +42,7 @@ export default function Dashboard() {
 
   const HandelRender = () => {
     axios
-      .get(`http://localhost:5000/initiative/`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .get(`http://localhost:5000/initiative/`)
       .then((res) => {
         setAllInitiative(res.data.initiative);
         console.log("res", res.data.initiative);

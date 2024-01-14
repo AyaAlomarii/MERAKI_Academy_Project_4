@@ -19,7 +19,7 @@ initiativeRouter.post("/",authentication,authorization("create initiative"),crea
 
 
 // endpoint for the GET request (getAllInitiative)
-initiativeRouter.get("/",authentication,getAllInitiative);
+initiativeRouter.get("/",getAllInitiative);
 
 
 // endpoint for the create a new Review
