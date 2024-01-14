@@ -241,7 +241,7 @@ const deleteReviewById = (req, res) => {
 // This function deletes a specific Review by its id
 const deleteInitiativeById = (req, res) => {
     const {id}= req.params;
-    reviewModel
+    initiativeModel
         .findByIdAndDelete(id)
         
         .then((result) => {

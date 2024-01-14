@@ -17,11 +17,13 @@ function App() {
     localStorage.getItem("isLoggedIn") || false
   );
   const [allInitiative, setAllInitiative] = useState([]);
+  const [edit, setEdit] = useState(localStorage.getItem("edit") || "")
 const [id, setId] = useState(localStorage.getItem("id") || "")
   return (
     <>
       <tokenContext.Provider
-        value={{
+        value={{edit,
+          setEdit,
           token,
           setToken,
           isLoggedIn,

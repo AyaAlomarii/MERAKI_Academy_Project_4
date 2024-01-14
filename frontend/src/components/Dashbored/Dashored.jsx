@@ -37,7 +37,8 @@ function Copyright() {
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
-  const { allInitiative, setAllInitiative,setId } = useContext(tokenContext);
+  const { token, allInitiative, setAllInitiative,setId ,edit,
+   } = useContext(tokenContext);
   const [message, setMessage] = useState("");
 
   const HandelRender = () => {
@@ -56,6 +57,10 @@ export default function Dashboard() {
       });
   };
 
+  const HandelDelete = () => {
+   
+  };
+console.log('first', localStorage.getItem("token"))
   useEffect(() => {
     HandelRender();
   }, []);
@@ -137,7 +142,23 @@ export default function Dashboard() {
         setId(ele._id)
           navigate(`/initiativeDetails/${ele._id}`);
         }}size="small">View</Button>
-                    
+                    {<>{edit==="659e5291d2f8fba730f39707"?<>
+                      <Button  onClick={(e) => {
+        console.log('ele._id', ele)
+        axios
+        .delete(`http://localhost:5000/initiative/${ele._id}`)
+        .then((res) => {
+          setAllInitiative( allInitiative.filter((ele1,i)=>{
+            return (ele1._id!==ele._id)
+        })) 
+          allInitiative.splice(i,1)
+          console.log('done',allInitiative.length)
+        })
+        .catch((err) => {
+         
+          console.log("err", err);
+        });
+        }}size="small">Delete</Button></>:<></>}</>}
                   </CardActions>
                 </Card>
               </Grid>

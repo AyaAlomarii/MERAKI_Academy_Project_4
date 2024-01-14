@@ -66,7 +66,8 @@ console.log('result here', result)
                 res.status(200).json({
                     success: true,
                     message: "Valid login credentials",
-                    token: userToken
+                    token: userToken,
+                    role:result.role
                     })
             }
         }

@@ -42,27 +42,32 @@ const defaultTheme = createTheme();
 export default function Login() {
   const [message, setMessage] = useState({});
   const [logInInfo, setLogInInfo] = useState({});
-  const { token, setToken, setIsLoggedIn, isLoggedIn } =
+  //req.token.role.permissions
+ 
+  const { edit,
+    setEdit,token, setToken, setIsLoggedIn, isLoggedIn } =
     useContext(tokenContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(`http://localhost:5000/users/login`, logInInfo)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token.role);
         localStorage.setItem("isLoggedIn", true);
         setMessage({
           messageShow: res.data.message,
           status: true,
         });
-
+        setEdit(res.data.role._id)
+        localStorage.setItem("edit",res.data.role._id)
+          console.log('d', res.data.role._id)
         console.log("res", res.data.message);
-        console.log("first", res.data.token);
+       // console.log("first", res.data.token);
         setToken(res.data.token);
 
         setIsLoggedIn(true);
 
-        // navigate("/dashboard")
+        // navigate("/dashboard").per
       })
       .catch((err) => {
         setMessage({
