@@ -65,27 +65,21 @@ export default function Dashboard() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Name
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      
       <main>
         {/* Hero unit */}
         <Box
           sx={{
             bgcolor: "background.paper",
-            pt: 8,
-            pb: 6,
+            pt: "10px",
+            pb: "6px",
           }}
         >
           <Container maxWidth="sm">
             <Typography
-              component="h1"
-              variant="h2"
+              component="h2"
+              variant="h4"
+              margin={3}
               align="center"
               color="text.primary"
               gutterBottom
@@ -102,18 +96,19 @@ export default function Dashboard() {
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
-            <Stack
+          {/*  <Stack
               sx={{ pt: 4 }}
               direction="row"
               spacing={2}
               justifyContent="center"
             >
-              {/*  <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button> */}
-            </Stack>
+              <Button variant="contained">Main call to action</Button>
+              <Button variant="outlined">Secondary action</Button> 
+            </Stack> */}
+
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 6 }} maxWidth="lg">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {allInitiative.map((ele, i) => (
