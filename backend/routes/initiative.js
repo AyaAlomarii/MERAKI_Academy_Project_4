@@ -10,7 +10,7 @@ const authorization=require("../middleware/authorization")
 
 // import functions from controller and middlewares
 
-const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation,getAllInitiativeByCategory,deleteReviewById,deleteInitiativeById,updateInitiativeById,updateReviewsById} = require("../controllers/initiative");
+const { createNewInitiative , getAllInitiative,createNewReview,createNewDonation,getAllInitiativeByCategory,deleteReviewById,deleteInitiativeById,updateInitiativeById,updateReviewsById,getAllInitiativeById} = require("../controllers/initiative");
 
 
 
@@ -43,6 +43,8 @@ initiativeRouter.put("/:id" ,updateInitiativeById);
 initiativeRouter.put("/:id/review" ,updateReviewsById);
 
 
+// endpoint for the get an in By its Id
+initiativeRouter.get("/:objectId" ,getAllInitiativeById);
 
 
 

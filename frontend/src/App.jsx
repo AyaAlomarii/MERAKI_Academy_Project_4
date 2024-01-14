@@ -3,7 +3,7 @@ import {
   jsxDEV as _jsxDEV,
   Fragment as _Fragment,
 } from "react/jsx-dev-runtime";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import "./App.css";
 import Register from "./components/Register";
 import Login from "./components/Login/Login";
@@ -17,7 +17,7 @@ function App() {
     localStorage.getItem("isLoggedIn") || false
   );
   const [allInitiative, setAllInitiative] = useState([]);
-
+const [id, setId] = useState(localStorage.getItem("id") || "")
   return (
     <>
       <tokenContext.Provider
@@ -28,6 +28,7 @@ function App() {
           setIsLoggedIn,
           allInitiative,
           setAllInitiative,
+          setId
         }}
       >
         <Navbar />
@@ -36,7 +37,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route
-            path="/initiativeDetails"
+            path="/initiativeDetails/:id"
             element={
               <Detailed />
             }

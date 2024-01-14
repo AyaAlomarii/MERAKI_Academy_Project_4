@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { tokenContext } from "../../App";
@@ -35,7 +37,7 @@ function Copyright() {
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
-  const { allInitiative, setAllInitiative } = useContext(tokenContext);
+  const { allInitiative, setAllInitiative,setId } = useContext(tokenContext);
   const [message, setMessage] = useState("");
 
   const HandelRender = () => {
@@ -61,7 +63,7 @@ export default function Dashboard() {
   useEffect(() => {
     HandelRender();
   }, []);
-
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -134,9 +136,12 @@ export default function Dashboard() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Link href="/initiativeDetails">
-                      <Button size="small">View</Button>
-                    </Link>
+                    
+                      <Button  onClick={(e) => {
+        setId(ele._id)
+          navigate(`/initiativeDetails/${ele._id}`);
+        }}size="small">View</Button>
+                    
                   </CardActions>
                 </Card>
               </Grid>

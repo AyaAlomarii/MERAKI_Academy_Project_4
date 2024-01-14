@@ -334,6 +334,42 @@ const updateReviewsById = (req, res) => {
     };
 
 
+    const getAllInitiativeById =(req ,res)=>{
+        const {objectId}=req.params
+        console.log('first', objectId)
+        initiativeModel.findById( objectId )
+        .populate("category")
+        .populate("reviewsSent")
+        .populate("donation")
+        .then((result)=>{
+            console.log('result', result)
+            if(!result){
+                
+                return res.status(404).json({
+                    success: false,
+                    message: `The Initiative with category => ${objectId} not found`,
+                    
+                    });
+            }else{
+                console.log('result', result)
+                res.status(200).json({
+                    success: true,
+                    message: `The category ${objectId} `,
+                    initiative: result,
+                    });
+            }
+    
+        }).catch((err)=>{
+            console.log('err', err)
+            res.status(500).json({
+                success: false,
+                message: `Server Error`,
+                err: err.message,
+                });
+        })
+    }
+    
+    
 
 
 module.exports = { 
@@ -345,5 +381,5 @@ module.exports = {
     deleteReviewById,
     deleteInitiativeById,
     updateInitiativeById,
-    updateReviewsById
+    updateReviewsById,getAllInitiativeById
 }; 
