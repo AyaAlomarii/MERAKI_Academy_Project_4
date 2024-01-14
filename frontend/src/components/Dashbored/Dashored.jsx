@@ -20,7 +20,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -36,17 +38,42 @@ function Copyright() {
 
 const defaultTheme = createTheme();
 
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 export default function Dashboard() {
   const { token, allInitiative, setAllInitiative,setId ,edit,
    } = useContext(tokenContext);
+   const [TabValue, setTabValue] = useState(0)
   const [message, setMessage] = useState("");
+  const [health, setHealth] = useState([])
+  const [education, setEducation] = useState([])
+  const [all, setAll] = useState([])
 
+
+
+useState
   const HandelRender = () => {
     axios
       .get(`http://localhost:5000/initiative/`)
       .then((res) => {
+        
         setAllInitiative(res.data.initiative);
-        console.log("res", res.data.initiative);
+        setAll(res.data.initiative)
+        console.log("res", res.data.initiative[0].category.categoryName);
+       setHealth( res.data.initiative.filter((ele,i)=>{
+        return ele.category.categoryName==="health"
+       
+      }))
+      setEducation(( res.data.initiative.filter((ele,i)=>{
+        return ele.category.categoryName==="education"
+       
+      })))
+        
+      
       })
       .catch((err) => {
         setMessage({
@@ -57,9 +84,7 @@ export default function Dashboard() {
       });
   };
 
-  const HandelDelete = () => {
-   
-  };
+  
 console.log('first', localStorage.getItem("token"))
   useEffect(() => {
     HandelRender();
@@ -99,6 +124,29 @@ console.log('first', localStorage.getItem("token"))
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
+
+
+            <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
+          <Tab label="ALL " onClick={()=>{
+            setTabValue(0)
+            setAllInitiative(all)
+          }} />
+          <Tab label="Health " onClick={()=>{
+            setTabValue(1)
+            setAllInitiative(health)
+
+          }} />
+          <Tab label="Item Three" onClick={()=>{
+            setTabValue(2)
+            setAllInitiative(education)
+
+          }} />
+        </Tabs>
+      </Box>
+     
+    </Box>
           {/*  <Stack
               sx={{ pt: 4 }}
               direction="row"
