@@ -67,7 +67,7 @@ export default function Dashboard() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
-      
+    
       <main>
         {/* Hero unit */}
         <Box
