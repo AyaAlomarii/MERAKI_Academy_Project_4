@@ -205,13 +205,14 @@ const [updatedInfo, setUpdatedInfo] = useState({})
           >
             <Button variant="contained">Donate</Button>
             <Button variant="outlined">Volunteer</Button>
-            {edit==="659e5291d2f8fba730f39707"?<Button variant="outlined">Edit</Button>:<></>}
-            {editClick?<>
-            
-            </>:<></>}
+            {edit==="659e5291d2f8fba730f39707"?<Button onClick={()=>{
+              setEditClick(true)
+            }} variant="outlined">Edit</Button>:<></>}<br/>
+
+           
           </Stack>
-        </Container>
-        <Box
+          {editClick?<>
+              <Box
       component="div"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -276,7 +277,7 @@ const [updatedInfo, setUpdatedInfo] = useState({})
         /><br/>
        <Button onClick={()=>{
    
-
+   
 
         axios.put(`http://localhost:5000/initiative/${id}`,updatedInfo).then((res)=>{
           setDetails(res.data.initiative)
@@ -284,11 +285,14 @@ const [updatedInfo, setUpdatedInfo] = useState({})
         }).catch((err)=>{
             console.log('err', err)
         })
-            
+        setEditClick(false)  
         }} sx={{  
                   mt:2 }} variant="contained">Done</Button>
       </div>
     </Box>
+            </>:<></>}
+        </Container>
+       
       
     </main>
     {/* Footer */}
