@@ -57,6 +57,7 @@ const Detailed = () => {
 const [updatedInfo, setUpdatedInfo] = useState({})
 const [message, setMessage] = useState("")
 const [messageShow, setMessageShow] = useState(false)
+const [newReview, setNewReview] = useState({})
 
   const HandelRender = () => {
     axios
@@ -193,8 +194,33 @@ const [messageShow, setMessageShow] = useState(false)
                    })} 
                   
                   </Typography></>}
-                
-                  
+                  <TextField
+           onChange={(e)=>{
+
+            setNewReview({...newReview,review:e.target.value})
+          }}
+          id="standard-disabled"
+          label="Write Your Review Here"
+          
+          variant="standard"
+        /><br/>{/* http://localhost:5000/initiative/65a1b7e683eb6f048f47adec/review */}
+                  <Button  onClick={()=>{
+   
+   console.log('new', newReview)
+
+   axios.post(`http://localhost:5000/initiative/${id}/review`,newReview,{
+     headers: {
+       authorization: `Bearer ${localStorage.getItem("token")}`,
+     },
+   }).then((res)=>{
+    console.log('first', res.data.review.review)
+    // setReview([...review,res.data.review]) 
+       console.log('res', res.data.review)
+   }).catch((err)=>{
+       console.log('err', err)
+   })
+     
+   }} size="small" sx={{ mt:2 }}variant="outlined">Add Review</Button>
                 </CardContent>
                
               </Card>
@@ -217,7 +243,7 @@ const [messageShow, setMessageShow] = useState(false)
               setDonate(false)
             }} variant="outlined">Edit</Button>:<></>}<br/>
 
-           
+             
           </Stack>
           {editClick?<>
               <Box
