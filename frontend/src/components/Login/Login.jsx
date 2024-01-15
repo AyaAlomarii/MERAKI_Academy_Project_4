@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useState, useContext, useNavigate } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../../App";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -43,7 +43,7 @@ export default function Login() {
   const [message, setMessage] = useState({});
   const [logInInfo, setLogInInfo] = useState({});
   //req.token.role.permissions
-  const navigate = useNavigate();
+  const navigate =useNavigate()
   const { edit,
     setEdit,token, setToken, setIsLoggedIn, isLoggedIn } =
     useContext(tokenContext);
@@ -135,7 +135,7 @@ export default function Login() {
               label="Remember me"
             />
             <Button onClick={()=>{
-              useNavigate("/dashboard")
+              navigate("/dashboard")
             }}
               type="submit"
               fullWidth

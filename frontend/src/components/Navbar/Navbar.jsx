@@ -36,7 +36,16 @@ function Navbar() {
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Button size="medium">Name</Button>
-        
+        <Typography
+          component="h2"
+          variant="h5"
+          color="inherit"
+          align="center"
+          noWrap
+          sx={{ flex: 1 }}
+        >
+          
+        </Typography>
         <IconButton sx={{ 
           margin:2,}}>
           <SearchIcon />
@@ -114,7 +123,24 @@ function Navbar() {
             </Menu></>:<></>}
         
       </Toolbar>
-    
+      <Toolbar
+        component="nav"
+        variant="dense"
+        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+      >
+      
+       {/*    <Link
+            color="inherit"
+            noWrap
+            
+            variant="body2"
+            
+            sx={{ p: 1, flexShrink: 0 }}
+          >
+          <Button size="small"></Button>
+          </Link> */}
+       
+      </Toolbar>
     </React.Fragment>
   );
 }
