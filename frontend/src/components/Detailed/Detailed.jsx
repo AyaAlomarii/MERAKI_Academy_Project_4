@@ -2,6 +2,8 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
+
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -47,7 +49,10 @@ const Detailed = () => {
   const [duties, setDuties] = useState([])
   const [vol, setVol] = useState({})
   const [volReq, setVolReq] = useState([])
+  const [review, setReview] = useState([])
+  const [editClick, setEditClick] = useState(false)
 
+const [updatedInfo, setUpdatedInfo] = useState({})
 
   const HandelRender = () => {
     axios
@@ -58,8 +63,9 @@ const Detailed = () => {
       setDuties(res.data.initiative.plan.listOfDuties)
       setSchedule(res.data.initiative.plan.schedule)
       setVol(res.data.initiative.volunteerRequirements)
-      //requirementSkills
-       setVolReq(res.data.initiative.volunteerRequirements.requirementSkills)
+      setReview(res.data.initiative.reviewsSent)
+      
+      setVolReq(res.data.initiative.volunteerRequirements.requirementSkills)
       })
     
       .catch((err) => {
@@ -71,7 +77,7 @@ const Detailed = () => {
   useEffect(() => {
     HandelRender();
   }, []);
-    const {allInitiative} =useContext(tokenContext)
+    const {edit} =useContext(tokenContext)
    
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -132,7 +138,7 @@ const Detailed = () => {
                  <Typography component="h2" fontSize= "large" fontWeight="" >
                  Age Group: {vol.ageGroup} <br/>
                  Skills: {volReq.map((ele,i)=>{
-                  return <>{ele}</>
+                  return <div key={i}>{ele}</div>
                  })}
                      
                   
@@ -161,9 +167,34 @@ const Detailed = () => {
                   })}
                  </ul>
                  </Typography>
+                 
+                 <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{  
+                  pt:2 }}>
+                 Reviews:
+                 </Typography>
+                 {review.length===0?<>
+                  Be first to give us your review
+                  </>:<> <Typography sx={{
+                  pt:2 }} component="h2" fontSize= "large" fontWeight="" >
+                  
+                  
+
+                    {review.map((ele,i)=>{
+                     return <div key={i}>
+                      <Typography  component="h2" fontSize= "large" fontWeight="bold" sx={{  borderBottom: 1, borderColor: 'divider',
+                  pt:2 }}>
+                      {ele.reviewer.firstName} {ele.reviewer.lastName}
+                 </Typography>
+                       {ele.review}</div>
+                   })} 
+                  
+                  </Typography></>}
+                
                   
                 </CardContent>
+               
               </Card>
+
             </Grid>
           
           <Stack
@@ -174,9 +205,90 @@ const Detailed = () => {
           >
             <Button variant="contained">Donate</Button>
             <Button variant="outlined">Volunteer</Button>
+            {edit==="659e5291d2f8fba730f39707"?<Button variant="outlined">Edit</Button>:<></>}
+            {editClick?<>
+            
+            </>:<></>}
           </Stack>
         </Container>
-     
+        <Box
+      component="div"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      
+    >
+      
+      <div>
+        <TextField
+          onChange={(e)=>{
+            setUpdatedInfo({...updatedInfo,name:e.target.value})
+          }}
+          id="standard-required"
+          label="Name"
+         
+          variant="standard"
+        />
+        <TextField
+          onChange={(e)=>{
+            setUpdatedInfo({...updatedInfo,description:e.target.value})
+          }}
+          id="standard-disabled"
+          label="description"
+         
+          variant="standard"
+        />
+         <TextField
+           onChange={(e)=>{
+            setUpdatedInfo({...updatedInfo,duration:e.target.value})
+          }}
+          id="standard-disabled"
+          label="duration"
+         
+          variant="standard"
+        />
+         <TextField
+          onChange={(e)=>{
+            setUpdatedInfo({...updatedInfo,city:e.target.value})
+          }}
+          id="standard-disabled"
+          label="city"
+        
+          variant="standard"
+        />
+          <TextField
+            onChange={(e)=>{
+              setUpdatedInfo({...updatedInfo,currentAmount:e.target.value})
+            }}
+          id="standard-disabled"
+          label="currentAmount"
+         
+          variant="standard"
+        />
+          <TextField
+           onChange={(e)=>{
+            setUpdatedInfo({...updatedInfo,volunteerLimit:e.target.value})
+          }}
+          id="standard-disabled"
+          label="volunteerLimit"
+          
+          variant="standard"
+        /><br/>
+       <Button onClick={()=>{
+   
+
+
+        axios.put(`http://localhost:5000/initiative/${id}`,updatedInfo).then((res)=>{
+          setDetails(res.data.initiative)
+            console.log('res', res.data.initiative)
+        }).catch((err)=>{
+            console.log('err', err)
+        })
+            
+        }} sx={{  
+                  mt:2 }} variant="contained">Done</Button>
+      </div>
+    </Box>
       
     </main>
     {/* Footer */}

@@ -22,8 +22,9 @@ function Navbar() {
   const {   setToken,
     isLoggedIn,
     setIsLoggedIn, edit} = useContext(tokenContext);
-    const handleOpenNavMenu = (event) => {
-      setAnchorElNav(event.currentTarget);
+    const handleOpenNavMenu = (e) => {
+      setAnchorElNav(e.currentTarget);
+      console.log('first', e.currentTarget)
     };
   
   

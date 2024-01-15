@@ -52,7 +52,7 @@ export default function Login() {
     axios
       .post(`http://localhost:5000/users/login`, logInInfo)
       .then((res) => {
-        localStorage.setItem("token", res.data.token.role);
+        localStorage.setItem("token", res.data.token);
         localStorage.setItem("isLoggedIn", true);
         setMessage({
           messageShow: res.data.message,
@@ -135,7 +135,7 @@ export default function Login() {
               label="Remember me"
             />
             <Button onClick={()=>{
-              navigate("/dashboard")
+            
             }}
               type="submit"
               fullWidth
