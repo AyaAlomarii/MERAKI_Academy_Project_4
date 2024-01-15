@@ -83,6 +83,7 @@ const getAllInitiative=(req,res)=>{
     .populate("category")
     .populate("donation")
     
+    
     .then((result)=>{
         res.status(200).json({
         success: true,
@@ -112,12 +113,14 @@ const createNewReview =async (req, res) => {
     review,
     reviewer:req.token.userId
 })
-    
+
     await newReview.save()
+    
     //find and update
 const result =await initiativeModel.findByIdAndUpdate(initiativeId,{$push:{reviewsSent:newReview}},{
     new: true
     })
+    
 //result.comments.push(newComment)
 //await result.save()
 console.log(result);
@@ -174,7 +177,39 @@ res.status(201).json({
     })
     }
 }; 
+const getAllReviews =(req ,res)=>{
+    const {objectId}=req.params
+    console.log('first', objectId)
+    reviewModel.find( {reviewer:objectId} )
+    
+    .populate("reviewer")
+    
+    .then((result)=>{
+        console.log('result', result)
+        if(!result){
+            
+            return res.status(404).json({
+                success: false,
+                message: `The Initiative with category => ${objectId} not found`,
+                });
+        }else{
+            console.log('result', result)
+            res.status(200).json({
+                success: true,
+                message: `The category ${objectId} `,
+                category: result,
+                });
+        }
 
+    }).catch((err)=>{
+        console.log('err', err)
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+            });
+    })
+}
 const getAllInitiativeByCategory =(req ,res)=>{
     const {objectId}=req.params
     console.log('first', objectId)
@@ -243,6 +278,9 @@ const deleteInitiativeById = (req, res) => {
     const {id}= req.params;
     initiativeModel
         .findByIdAndDelete(id)
+        .populate("reviewsSent")
+        .populate("category")
+        .populate("donation")
         
         .then((result) => {
         if (!result) {
@@ -339,7 +377,10 @@ const updateReviewsById = (req, res) => {
         console.log('first', objectId)
         initiativeModel.findById( objectId )
         .populate("category")
-        .populate("reviewsSent")
+        .populate({ path: "reviewsSent", populate: { path: "reviewer", select: "firstName lastName", },})
+
+        
+        
         .populate("donation")
         .then((result)=>{
             console.log('result', result)
@@ -381,5 +422,6 @@ module.exports = {
     deleteReviewById,
     deleteInitiativeById,
     updateInitiativeById,
-    updateReviewsById,getAllInitiativeById
+    updateReviewsById,getAllInitiativeById,
+    getAllReviews
 }; 

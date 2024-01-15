@@ -51,8 +51,12 @@ const Detailed = () => {
   const [volReq, setVolReq] = useState([])
   const [review, setReview] = useState([])
   const [editClick, setEditClick] = useState(false)
+  const [donate, setDonate] = useState(false)
+  const [donateAmount, setDonateAmount] = useState("")
 
 const [updatedInfo, setUpdatedInfo] = useState({})
+const [message, setMessage] = useState("")
+const [messageShow, setMessageShow] = useState(false)
 
   const HandelRender = () => {
     axios
@@ -203,10 +207,14 @@ const [updatedInfo, setUpdatedInfo] = useState({})
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained">Donate</Button>
+            <Button onClick={()=>{
+              setEditClick(false)
+              setDonate(true)
+            }} variant="contained">Donate</Button>
             <Button variant="outlined">Volunteer</Button>
             {edit==="659e5291d2f8fba730f39707"?<Button onClick={()=>{
               setEditClick(true)
+              setDonate(false)
             }} variant="outlined">Edit</Button>:<></>}<br/>
 
            
@@ -284,6 +292,7 @@ const [updatedInfo, setUpdatedInfo] = useState({})
             console.log('res', res.data.initiative)
         }).catch((err)=>{
             console.log('err', err)
+
         })
         setEditClick(false)  
         }} sx={{  
@@ -291,6 +300,58 @@ const [updatedInfo, setUpdatedInfo] = useState({})
       </div>
     </Box>
             </>:<></>}
+            {donate?<>
+              <Box
+      component="div"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      
+    >
+      <div>
+      <TextField
+           onChange={(e)=>{
+            setDonateAmount({amount:e.target.value})
+          }}
+          id="standard-disabled"
+          label="Amount"
+          
+          variant="standard"
+        /><br/>
+       <Button onClick={()=>{
+   
+   
+
+        axios.post(`http://localhost:5000/initiative/${id}/donation`,donateAmount,{
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }).then((res)=>{
+          setMessage(res.data.message)
+          setMessageShow(true)
+            console.log('res', res.data.message)
+        }).catch((err)=>{
+            console.log('err', err)
+        })
+          
+        }} sx={{  
+                  mt:2 }} variant="contained">Done</Button>
+
+{messageShow?<><Typography
+        variant="subtitle1"
+        align="center"
+        color="text.secondary"
+        component="p"
+      >
+        {message}
+      </Typography></>:<></>}
+      </div>
+    </Box>
+
+            </>:<>
+            
+            
+            </>}
         </Container>
        
       
