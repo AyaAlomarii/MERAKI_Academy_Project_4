@@ -21,7 +21,7 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null)
   const {   setToken,
     isLoggedIn,
-    setIsLoggedIn, } = useContext(tokenContext);
+    setIsLoggedIn, edit} = useContext(tokenContext);
     const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
     };
@@ -36,16 +36,7 @@ function Navbar() {
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Button size="medium">Name</Button>
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          sx={{ flex: 1 }}
-        >
-          
-        </Typography>
+        
         <IconButton sx={{ 
           margin:2,}}>
           <SearchIcon />
@@ -104,37 +95,26 @@ function Navbar() {
                 <MenuItem  onClick={handleCloseNavMenu}  >
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-                
+                <MenuItem  onClick={handleCloseNavMenu}  >
+                  <Typography textAlign="center">Donate</Typography>
+                </MenuItem>
+                <Link href="/dashboard">
                 <MenuItem  onClick={()=>{
                   handleCloseNavMenu()
                   
             localStorage.clear()
+            
           }} >
                   <Typography textAlign="center">Log out</Typography>
                 </MenuItem>
+                </Link>
+
                 
              
             </Menu></>:<></>}
         
       </Toolbar>
-      <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
-      >
-      
-       {/*    <Link
-            color="inherit"
-            noWrap
-            
-            variant="body2"
-            
-            sx={{ p: 1, flexShrink: 0 }}
-          >
-          <Button size="small"></Button>
-          </Link> */}
-       
-      </Toolbar>
+    
     </React.Fragment>
   );
 }

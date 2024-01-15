@@ -1,43 +1,29 @@
 import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import {useEffect,useState,useContext}from 'react'
-import { tokenContext } from '../../App';
-import Container from "@mui/material/Container";
-import { Routes, Route, useParams } from "react-router-dom";
-import Typography from '@mui/material/Typography';
-import axios from "axios";
-import Link from '@mui/material/Link';
-import Avatar from '@mui/material/Avatar';
+import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
-import Paper from '@mui/material/Paper';
-
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {useEffect,useState,useContext}from 'react'
+import { tokenContext } from '../../App';
+import { Routes, Route, useParams } from "react-router-dom";
+import axios from 'axios';
 
-/* import  BottomNavigation from "@mui/material";
-import  BottomNavigationAction from "@mui/material"; */
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArchiveIcon from "@mui/icons-material/Archive";
-const Item = styled(Paper)(({ theme }) => ({
 
-borderStyle:"none",
-border:"none",
-  textAlign: 'center',
-  
-}));
-const defaultTheme = createTheme();
 
 function Copyright(props) {
   return (
@@ -51,6 +37,8 @@ function Copyright(props) {
     </Typography>
   );
 }
+
+const defaultTheme = createTheme();
 const Detailed = () => {
   const { id } = useParams()
   const [details, setDetails] = useState({})
@@ -71,107 +59,76 @@ const Detailed = () => {
     HandelRender();
   }, []);
     const {allInitiative} =useContext(tokenContext)
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-      });
-    };
+   
   return (
-    <Container sx={{ width: 900 }}>
-    <Typography variant="h3" component="h1" marginTop={3}>
-      {details.name}
-    </Typography>
-    <Box marginTop={3} sx={{ display: "flex" }}>
-      <img
-        src={details.img}
-        height={325}
-      />
-     
-    </Box>
-    <Typography variant="h5" component="h4" marginTop={3}>
-    Description
-    </Typography>
-    <Box sx={{ display: "flex" }}>
-      <Typography variant="h7" component="p" marginY={2}>
-       {details.description}<br/>
-      
-      </Typography>
-      
-      {/* 
- 
- 
-  "currentAmount": 0,
-  "volunteerLimit": 10,
-  
-    "listOfDuties": [
-      "Support Education Access: Strive to make education accessible by fostering a positive learning environment and encouraging active participation",
-      "Achieve Learning Engagement: Strive to ensure the active participation of at least 70% of children in targeted villages in regular learning sessions, aiming to progressively increase this engagement to 90-100% over time",
-      "Document and Assess Progress: Track progress and assess the impact of the sessions to adapt and improve the educational approach continually."
-    ],
-    "targetAmount": 1000,
-    "startDate": {
-      "$date": "2024-01-01T21:00:00.000Z"
-    },
-    "endDate": {
-      "$date": "2025-01-01T21:00:00.000Z"
-    },
-    "targetAudience": "children"
-  },
-  "volunteerRequirements": {
-    "ageGroup": "20-29",
-    "requirementSkills": [
-      "college students"
-    ]
-  },
-  "reviewsSent": [],
-  "category": {
-    "$oid": "659e56be83abe2262ed1cafd"
-  },
-  "donation": [], */}
-    </Box>
-    <Typography variant="h6" component="h4" marginBottom={1} marginTop={1}>
-      Duration: {details.duration}
-    </Typography>
-    <Typography variant="h6" component="h4" marginBottom={1} marginTop={1}>
-    City: {details.city}
-    </Typography>
-    <Typography variant="h6" component="h4" marginBottom={1} marginTop={1}>
-      
-        {console.log('here', details.donation
-)}
-  City: {/* {details.plan.schedule.map((ele,i)=>{
-      return(
-        <li key={i}>
-        { ele}
-        </li>
-      )
-    })}  */}
+    <ThemeProvider theme={defaultTheme}>
     
-    </Typography>
-    <Button  variant="outlined" size="medium">
-         Make a donation
-        </Button>
-    {/* "plan": {
-    "schedule": [
-      "friday: teaching math",
-      "saturday: teaching science"
-    ], */}
-    <Paper
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-      elevation={3}
-    >
+    
+    <main>
+      {/* Hero unit */}
       
-        showLabels
-        
-        
+        <Container sx={{justifyContent:"center"}}  maxWidth="lg">
+        <Grid item sx={{justifyItems:"center"}} >
+              <Card 
+                sx={{ margin:"auto", pt:5, width:"80%",height: '60%', display: 'flex', flexDirection: 'row' ,alignSelf:"center" }}
+              >
+                <CardMedia
+                  component="div"
+                  sx={{
+                    // 16:9
+                    width:"70%",
+                    height:"60%",
+                    pt: '56.25%',
+                  }}
+                  image={details.img}
+                />
+                <CardContent  sx={{ flexGrow: 1 }}>
+                  <Typography fontWeight="bold" gutterBottom variant="h5" component="h2">
+                   {details.name}
+                  </Typography>
+                  <Typography fontSize= "large" component="h2" sx={{ pt:2 }}>
+                  {details.description}
+                  </Typography>
+                  <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
+                 City: {details.city}
+                  </Typography>
+                  <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
+                 Duration: {details.duration}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          
+          <Stack
+            sx={{ pt: 4 }}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
+          >
+            <Button variant="contained">Donate</Button>
+            <Button variant="outlined">Volunteer</Button>
+          </Stack>
+        </Container>
+     
       
-      
-      
-    </Paper>
-  </Container>
+    </main>
+    {/* Footer */}
+    <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Typography variant="h6" align="center" gutterBottom>
+        Footer
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        align="center"
+        color="text.secondary"
+        component="p"
+      >
+        Something here to give the footer a purpose!
+      </Typography>
+      <Copyright />
+    </Box>
+    {/* End footer */}
+  </ThemeProvider>
   )
 }
 

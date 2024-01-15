@@ -43,7 +43,7 @@ export default function Login() {
   const [message, setMessage] = useState({});
   const [logInInfo, setLogInInfo] = useState({});
   //req.token.role.permissions
- 
+  const navigate = useNavigate();
   const { edit,
     setEdit,token, setToken, setIsLoggedIn, isLoggedIn } =
     useContext(tokenContext);
@@ -134,7 +134,9 @@ export default function Login() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
+            <Button onClick={()=>{
+              useNavigate("/dashboard")
+            }}
               type="submit"
               fullWidth
               variant="contained"
