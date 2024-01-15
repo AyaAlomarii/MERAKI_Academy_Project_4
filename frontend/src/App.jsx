@@ -9,6 +9,8 @@ import Register from "./components/Register";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashbored/Dashored";
 import Detailed from "./components/Detailed/Detailed";
+import Main from "./components/Main/Main";
+import Image from "./components/profile/test"
 import Navbar from "./components/Navbar/Navbar";
 export const tokenContext = createContext();
 function App() {
@@ -34,6 +36,7 @@ const [id, setId] = useState(localStorage.getItem("id") || "")
         }}
       >
         <Navbar />
+        
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -42,6 +45,12 @@ const [id, setId] = useState(localStorage.getItem("id") || "")
             path="/initiativeDetails/:id"
             element={
               <Detailed />
+            }
+          />
+           <Route
+            path="/main"
+            element={
+              <Main />
             }
           />
         </Routes>

@@ -237,7 +237,7 @@ const [newReview, setNewReview] = useState({})
               setEditClick(false)
               setDonate(true)
             }} variant="contained">Donate</Button>
-            <Button variant="outlined">Volunteer</Button>
+            {/* <Button variant="outlined">Volunteer</Button> */}
             {edit==="659e5291d2f8fba730f39707"?<Button onClick={()=>{
               setEditClick(true)
               setDonate(false)
