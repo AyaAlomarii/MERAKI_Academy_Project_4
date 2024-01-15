@@ -126,10 +126,23 @@ console.log('first', localStorage.getItem("token"))
             </Typography>
 
 
-            <Box sx={{ width: '100%' }}>
+          
+          {/* {  <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+              <Button variant="contained">Main call to action</Button>
+              
+            </Stack> } */}
+
+          </Container>
+          <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
-          <Tab label="ALL " onClick={()=>{
+        <Tabs   value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
+          
+          <Tab  size="medium" label="ALL " onClick={()=>{
             setTabValue(0)
             setAllInitiative(all)
           }} />
@@ -147,17 +160,6 @@ console.log('first', localStorage.getItem("token"))
       </Box>
      
     </Box>
-          {/*  <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button> 
-            </Stack> */}
-
-          </Container>
         </Box>
         <Container sx={{ py: 6 }} maxWidth="lg">
           {/* End hero unit */}

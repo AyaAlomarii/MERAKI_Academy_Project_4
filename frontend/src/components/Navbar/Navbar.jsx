@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -10,13 +10,28 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { tokenContext } from "../../App";
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+const pages = ['Products', 'Pricing', 'Blog'];
 function Navbar() {
 
 
   const navigate = useNavigate();
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null)
   const {   setToken,
     isLoggedIn,
     setIsLoggedIn, } = useContext(tokenContext);
+    const handleOpenNavMenu = (event) => {
+      setAnchorElNav(event.currentTarget);
+    };
+  
+  
+    const handleCloseNavMenu = () => {
+      setAnchorElNav(null);
+    };
+  
+  
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -44,15 +59,9 @@ function Navbar() {
           flex: 1 }} variant="outlined" size="medium">
           initiatives
         </Button></Link>
-        {isLoggedIn?<><Link href="">
+        {isLoggedIn?<>
           
-          <Button onClick={()=>{
-            localStorage.clear()
-          }} sx={{ 
-          margin:2,
-          flex: 1 }} variant="outlined" size="medium">
-            Log Out
-          </Button></Link></>:<> 
+         </>:<> 
         <Link href="/register">
         <Button  variant="outlined" size="medium">
           Sign up
@@ -63,16 +72,50 @@ function Navbar() {
           flex: 1 }} variant="outlined" size="medium">
           Sign In
         </Button></Link></>}
-       
-        <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+        {isLoggedIn?<><IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              
+                <MenuItem  onClick={handleCloseNavMenu}  >
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+                
+                <MenuItem  onClick={()=>{
+                  handleCloseNavMenu()
+                  
+            localStorage.clear()
+          }} >
+                  <Typography textAlign="center">Log out</Typography>
+                </MenuItem>
+                
+             
+            </Menu></>:<></>}
+        
       </Toolbar>
       <Toolbar
         component="nav"
