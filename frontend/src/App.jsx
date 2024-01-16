@@ -9,8 +9,8 @@ import Register from "./components/Register";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashbored/Dashored";
 import Detailed from "./components/Detailed/Detailed";
+import Profile from"./components/profile/Profile"
 import Main from "./components/Main/Main";
-import Image from "./components/profile/test"
 import Navbar from "./components/Navbar/Navbar";
 export const tokenContext = createContext();
 function App() {
@@ -53,7 +53,17 @@ const [id, setId] = useState(localStorage.getItem("id") || "")
               <Main />
             }
           />
+           <Route
+            path="/profile"
+            element={
+              <Profile />
+            }
+          />
         </Routes>
+       
+        
+
+
       </tokenContext.Provider>
     </>
   );
