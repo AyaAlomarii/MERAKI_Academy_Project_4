@@ -16,8 +16,8 @@ const initiativeSchema = new mongoose.Schema({
         schedule: [{type:String , required:true}],
         listOfDuties: [{type:String ,required:true}],
         targetAmount: {type:Number , required:true},
-        startDate: {type:Date , required:true},
-        endDate: {type:Date , required:true},
+        startDate: {type:String , required:true},
+        endDate: {type:String , required:true},
         targetAudience: {type:String , required:true},
 
 

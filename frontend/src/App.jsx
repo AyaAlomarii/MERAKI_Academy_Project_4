@@ -5,10 +5,12 @@ import {
 } from "react/jsx-dev-runtime";
 import { Routes, Route, useParams } from "react-router-dom";
 import "./App.css";
+
 import Register from "./components/Register";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashbored/Dashored";
 import Detailed from "./components/Detailed/Detailed";
+
 import Profile from"./components/profile/Profile"
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
@@ -19,6 +21,7 @@ import { Container, Grid } from "@mui/material";
 import Stack from '@mui/material/Stack';
 import { pink } from '@mui/material/colors';
 import SvgIcon from '@mui/material/SvgIcon';
+import Create from "./components/CreateIn/CreateIn";
 function Copyright(props) {
   return (
     <Typography
@@ -91,6 +94,12 @@ const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
             path="/profile"
             element={
               <Profile />
+            }
+          />
+           <Route
+            path="/createNewInitiative"
+            element={
+              <Create />
             }
           />
         </Routes>

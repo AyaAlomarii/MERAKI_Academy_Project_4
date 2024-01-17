@@ -158,18 +158,36 @@ console.log('first', localStorage.getItem("token"))
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
+           
+   
+   
 
-
-          
-          {/* {  <Stack
+  { /* axios.post(`http://localhost:5000/initiative/${id}/donation`,donateAmount,{
+     headers: {
+       authorization: `Bearer ${localStorage.getItem("token")}`,
+     },
+   }).then((res)=>{
+     setMessage(res.data.message)
+     setMessageShow(true)
+       console.log('res', res.data.message)
+   }).catch((err)=>{
+       console.log('err', err)
+   }) */
+     }
+   {edit==="659e5291d2f8fba730f39707"?<><Stack
               sx={{ pt: 4 }}
               direction="row"
               spacing={2}
               justifyContent="center"
+              m={4}
             >
-              <Button variant="contained">Main call to action</Button>
+              <Button onClick={()=>{
+                navigate("/createNewInitiative")
+              }} variant="contained">Create New Initiative</Button>
               
-            </Stack> } */}
+            </Stack> </>:<></>}
+          
+           
 
           </Container>
           <Box sx={{ width: '100%' }}>
@@ -185,18 +203,21 @@ console.log('first', localStorage.getItem("token"))
             setAllInitiative(health)
 
           }} />
-          <Tab label="Item Three" onClick={()=>{
+          <Tab label="Education" onClick={()=>{
             setTabValue(2)
             setAllInitiative(education)
 
           }} />
+           
         </Tabs>
+        
       </Box>
      
     </Box>
         </Box>
         <Container sx={{ py: 6 }} maxWidth="lg">
           {/* End hero unit */}
+          
           <Grid container spacing={4}>
             {allInitiative.map((ele, i) => (
               <Grid   onClick={(e) => {

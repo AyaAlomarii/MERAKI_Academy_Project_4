@@ -104,8 +104,12 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
       
-      <Menu
+      <Menu 
         id="basic-menu"
+        sx={{
+          zIndex:"2"
+
+        }}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}

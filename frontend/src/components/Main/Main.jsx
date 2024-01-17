@@ -27,7 +27,8 @@ function Main() {
 
   return (
     <Container
-        height="100vh"
+        
+        maxWidth="lg"
     >
     <Paper
       sx={{
@@ -48,25 +49,23 @@ function Main() {
       }}
     >
     </Paper>
-  
-        <Container maxWidth="lg">
-           
-            <Typography
+    <Typography
             textAlign="center"
            
             sx={{
                 
-                backgroundColor: "rgba(0,0,0, 0.8)",
+                backgroundColor: "rgba(0,0,0, 0.7)",
                 color: "white",
                 fontWeight: "bold",
               //  border: "3px solid #f1f1f1",
                 position: "absolute",
+        borderRadius:" 50px",
                 
-                top: "50%",
+                top: "80%",
                 left: "50%",
                 transform:" translate(-50%, -50%)",
                 ZIndex: "2",
-                width: "80%",
+                width: "50%",
                 padding: "20px",
                 textAlign: "center"
             }}
@@ -76,9 +75,13 @@ function Main() {
               align="center"
               paragraph
             >
-                 All opportunities
+                Jood<br/>
+                Connect. Empower. Change.
               
             </Typography>
+        <Container maxWidth="lg">
+           
+           
 <Box m={3} align="center">
 <img style={{width:"22%",height:"20%",margin:"15px"}}
         src="https://i.imgur.com/34F1rTZ.png" alt="" />
@@ -108,9 +111,9 @@ It is a long established fact that a reader will be distracted by thethe readabl
   display:"grid",
  gridTemplateColumns:"1fr 1fr 1fr"
 }} >
-<Card sx={{textAlign:"center" ,m:"auto" ,backgroundColor:"#FFFFFF",borderRadius:"20px",border:"#155fa0 solid"}}  >
+<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto", mr:"3px",textAlign:"center", m:1,height:"90%",boxShadow:"2px 12px #155fa0, -0.5em  .4em   #155fa0"}}  >
 <CardContent>
-<Typography color={"#FFFFFF"} align='center'>
+<Typography  align='center'>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lightbulb-fill" viewBox="0 0 16 16">
   <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
 </svg><br/>
@@ -123,7 +126,7 @@ t is a long established fact that reader distracted by the the readable content 
 
 
 </Card>
-<Card sx={{ border:"#155fa0 solid",borderRadius:"20px",m:"auto" ,textAlign:"center",m:1,backgroundColor:"primary"}} >
+<Card sx={{ border:"#155fa0 solid",borderRadius:"20px",m:"auto" ,textAlign:"center",m:1,backgroundColor:"primary" , boxShadow:" 1px 12px #155fa0"}} >
 <CardContent>
 <Typography align='center'>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
@@ -136,10 +139,10 @@ t is a long established fact that reader distracted by the the readable content 
 
 </CardContent>
 </Card>
-<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto" ,textAlign:"center", m:1}}>
+<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto" ,textAlign:"center", m:1,height:"90%",boxShadow:"12px 12px 1px 1px #155fa0"}}>
 <CardContent>
 <Typography align='center'>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-check-fill" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" className="bi bi-person-check-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
   <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
 </svg><br/>
