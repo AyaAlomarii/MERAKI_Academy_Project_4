@@ -38,6 +38,10 @@ const customTheme = createTheme({
     },
    
   },
+  
+ 
+    
+  
 });
 
 const StyledAvatar = styled(Card)`
@@ -170,9 +174,9 @@ console.log('first', localStorage.getItem("token"))
           </Container>
           <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs   value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
+        <Tabs  textColor="text.primary" value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
           
-          <Tab  size="medium" label="ALL " onClick={()=>{
+          <Tab  theme={customTheme}  size="medium" label="ALL "  onClick={()=>{
             setTabValue(0)
             setAllInitiative(all)
           }} />
@@ -250,22 +254,7 @@ console.log('first', localStorage.getItem("token"))
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+    
     </ThemeProvider>
   );
 }

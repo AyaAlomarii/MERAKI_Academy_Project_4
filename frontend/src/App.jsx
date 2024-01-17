@@ -12,6 +12,28 @@ import Detailed from "./components/Detailed/Detailed";
 import Profile from"./components/profile/Profile"
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        www.Jood.org.com
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
 export const tokenContext = createContext();
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
@@ -65,7 +87,21 @@ const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
         </Routes>
        
         
-
+{/* Footer */}
+<Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Typography variant="h6" align="center" gutterBottom>
+        Footer
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        align="center"
+        color="text.secondary"
+        component="p"
+      >
+        Something here to give the footer a purpose!
+      </Typography>
+      <Copyright />
+    </Box>
 
       </tokenContext.Provider>
     </div>

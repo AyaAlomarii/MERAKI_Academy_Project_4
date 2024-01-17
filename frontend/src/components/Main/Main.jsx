@@ -10,6 +10,9 @@ import Button from "@mui/material/Button";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -74,15 +77,11 @@ function Main() {
               paragraph
             >
                  All opportunities
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              
             </Typography>
-<Box  align="center">
-<Button align="center" sx={{
-                m:"auto",
-                borderRadius:" 12px",
-            }} variant="contained">Main call to action</Button>
+<Box m={3} align="center">
+<img style={{width:"22%",height:"20%",margin:"15px"}}
+        src="https://i.imgur.com/34F1rTZ.png" alt="" />
 
 </Box>
 <Paper
@@ -105,34 +104,53 @@ function Main() {
 <Box p={2} m={2} ><Typography variant="h4" align='center'>Khairah is Nonprofit Organization For Help Children.<br/>
 It is a long established fact that a reader will be distracted by thethe readable content off a page when looking at its layout point using Lorem Ipsum is that it has.</Typography></Box>
     </Paper>
+<Container sx={{ m:3,
+  display:"grid",
+ gridTemplateColumns:"1fr 1fr 1fr"
+}} >
+<Card sx={{textAlign:"center" ,m:"auto" ,backgroundColor:"#FFFFFF",borderRadius:"20px",border:"#155fa0 solid"}}  >
+<CardContent>
+<Typography color={"#FFFFFF"} align='center'>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
+</svg><br/>
 
-<ImageList 
-      sx={{m:2, width: 500, height: 450 }}
-      variant="quilted"
-      cols={4}
-      rowHeight={121}
-    >
-      {itemData.map((item) => (
-        <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
-          <img style={{}}
-            {...srcset(item.img, 121, item.rows, item.cols)}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+Our Vision<br/>
+t is a long established fact that reader distracted by the the readable content off page looking at its layout point.
+</Typography>
 
-          {/* {  <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              
-            </Stack> } */}
+</CardContent>
 
+
+</Card>
+<Card sx={{ border:"#155fa0 solid",borderRadius:"20px",m:"auto" ,textAlign:"center",m:1,backgroundColor:"primary"}} >
+<CardContent>
+<Typography align='center'>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+</svg><br/>
+  Contact Us<br/>
+t is a long established fact that reader distracted by the the readable content off page looking at its layout point.
+  
+</Typography>
+
+</CardContent>
+</Card>
+<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto" ,textAlign:"center", m:1}}>
+<CardContent>
+<Typography align='center'>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-check-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+</svg><br/>
+  Our Mission<br/>
+t is a long established fact that reader distracted by the the readable content off page looking at its layout point.
+  
+</Typography>
+
+</CardContent>
+</Card>
+</Container>
           </Container>
       
     
@@ -142,62 +160,4 @@ It is a long established fact that a reader will be distracted by thethe readabl
 
 
 
-const itemData = [
-  {
-    img: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=250&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Breakfast',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1527525443983-6e60c75fff46?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Burger',
-  },
-  {
-    img: 'https://i.pinimg.com/564x/cb/74/59/cb7459d3a1bcea5cdae12284f4ae235e.jpg',
-    title: 'Camera',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1565803974275-dccd2f933cbb?q=80&w=471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Coffee',
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Hats',
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1507427254987-7be33d0321d3?q=80&w=370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Honey',
-    author: '@arwinneil',
-    rows: 2,
-    cols: 2,
-  },
-/*   {
-    img: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Basketball',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-    title: 'Fern',
-  }, */
-  {
-    img: 'https://images.unsplash.com/photo-1617450365226-9bf28c04e130?q=80&w=570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Mushrooms',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Mushrooms',
-    rows: 2,
-    cols: 2,
-  }, {
-    img: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?q=80&w=370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: 'Coffee',
-    cols: 2,
-  },
- 
-];
 export default Main;

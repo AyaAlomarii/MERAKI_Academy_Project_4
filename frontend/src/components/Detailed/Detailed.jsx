@@ -2,6 +2,7 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
@@ -27,18 +28,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const defaultTheme = createTheme({ typography: {
     fontFamily: [
@@ -71,6 +61,7 @@ const [updatedInfo, setUpdatedInfo] = useState({})
 const [message, setMessage] = useState("")
 const [messageShow, setMessageShow] = useState(false)
 const [newReview, setNewReview] = useState({})
+const [donationSent, setDonationSent] = useState(false)
 
   const HandelRender = () => {
     axios
@@ -249,11 +240,15 @@ const [newReview, setNewReview] = useState({})
             <Button onClick={()=>{
               setEditClick(false)
               setDonate(true)
+          setMessageShow(false)
+
             }} variant="contained">Donate</Button>
             {/* <Button variant="outlined">Volunteer</Button> */}
             {edit==="659e5291d2f8fba730f39707"?<Button onClick={()=>{
               setEditClick(true)
               setDonate(false)
+          setMessageShow(false)
+
             }} variant="outlined">Edit</Button>:<></>}<br/>
 
              
@@ -267,7 +262,7 @@ const [newReview, setNewReview] = useState({})
       
     >
       
-      <div>
+      <Container  align="center" sx={{justifyContent:"center"}}  maxWidth="lg">
         <TextField
           onChange={(e)=>{
             setUpdatedInfo({...updatedInfo,name:e.target.value})
@@ -285,7 +280,7 @@ const [newReview, setNewReview] = useState({})
           label="description"
          
           variant="standard"
-        />
+        /><br/>
          <TextField
            onChange={(e)=>{
             setUpdatedInfo({...updatedInfo,duration:e.target.value})
@@ -303,7 +298,7 @@ const [newReview, setNewReview] = useState({})
           label="city"
         
           variant="standard"
-        />
+        /><br/>
           <TextField
             onChange={(e)=>{
               setUpdatedInfo({...updatedInfo,currentAmount:e.target.value})
@@ -336,7 +331,7 @@ const [newReview, setNewReview] = useState({})
         setEditClick(false)  
         }} sx={{  
                   mt:2 }} variant="contained">Done</Button>
-      </div>
+     </Container>
     </Box>
             </>:<></>}
             {donate?<>
@@ -347,8 +342,9 @@ const [newReview, setNewReview] = useState({})
       }}
       
     >
-      <div>
+      <Container align="center"  sx={{justifyContent:"center"}}  maxWidth="lg" m="auto">
       <TextField
+      
            onChange={(e)=>{
             setDonateAmount({amount:e.target.value})
           }}
@@ -376,15 +372,15 @@ const [newReview, setNewReview] = useState({})
         }} sx={{  
                   mt:2 }} variant="contained">Done</Button>
 
-{messageShow?<><Typography
-        variant="subtitle1"
-        align="center"
-        color="text.secondary"
-        component="p"
-      >
-        {message}
-      </Typography></>:<></>}
-      </div>
+{messageShow?<>
+         <Stack sx={{ width: '100%' }} spacing={2}>
+      <Alert severity="success">This is a success {message}</Alert>
+   
+     
+    </Stack>
+     
+      </>:<></>}
+      </Container>
     </Box>
 
             </>:<>
@@ -395,22 +391,7 @@ const [newReview, setNewReview] = useState({})
        
       
     </main>
-    {/* Footer */}
-    <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-      <Typography variant="h6" align="center" gutterBottom>
-        Footer
-      </Typography>
-      <Typography
-        variant="subtitle1"
-        align="center"
-        color="text.secondary"
-        component="p"
-      >
-        Something here to give the footer a purpose!
-      </Typography>
-      <Copyright />
-    </Box>
-    {/* End footer */}
+
   </ThemeProvider>
   )
 }

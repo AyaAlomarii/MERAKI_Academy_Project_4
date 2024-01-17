@@ -14,7 +14,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 const pages = ['Products', 'Pricing', 'Blog'];
 
-
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
 function Navbar() {
 
 
@@ -33,12 +40,20 @@ function Navbar() {
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
-  
+    const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="medium">Name</Button>
+        <Button size="medium"><img style={{width:"60px",height:"60px"}}
+        src="https://i.imgur.com/34F1rTZ.png" alt="" /></Button>
         <Typography
           component="h2"
           variant="h5"
@@ -59,23 +74,71 @@ function Navbar() {
         <Link href="/dashboard">
         <Button   sx={{ 
           margin:2,
-          flex: 1 }} variant="outlined" size="medium">
+          flex: 1 }} variant="" size="medium">
           initiatives
         </Button></Link>
         {isLoggedIn?<>
           
          </>:<> 
         <Link href="/register">
-        <Button  variant="outlined" size="medium">
+        <Button  variant="" size="medium">
           Sign up
         </Button></Link>
         <Link href="/login">
         <Button   sx={{ 
           margin:2,
-          flex: 1 }} variant="outlined" size="medium">
+          flex: 1 }} variant="" size="medium">
           Sign In
         </Button></Link></>}
-        {isLoggedIn?<><IconButton
+        {isLoggedIn?<>
+        
+          <div>
+    
+        <IconButton
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}>
+              <MenuIcon />
+            </IconButton>
+      
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+         <Link href={`/profile`}>
+                <MenuItem  onClick={handleCloseNavMenu}  >
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+                </Link>
+                <Link href="/main">
+                <MenuItem  onClick={handleCloseNavMenu}  >
+                 <Typography textAlign="center">About Us</Typography>
+                </MenuItem>
+                </Link>
+                <Link href="/dashboard">
+                <MenuItem  onClick={()=>{
+                  handleCloseNavMenu()
+                  
+            localStorage.clear()
+            
+          }} >
+                  <Typography textAlign="center">Log out</Typography>
+                </MenuItem>
+                </Link>
+
+        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
+      </Menu>
+    </div>
+        {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -103,30 +166,10 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <Link href={`/profile`}>
-                <MenuItem  onClick={handleCloseNavMenu}  >
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                </Link>
-                <Link href="/main">
-                <MenuItem  onClick={handleCloseNavMenu}  >
-                 <Typography textAlign="center">About Us</Typography>
-                </MenuItem>
-                </Link>
-                <Link href="/dashboard">
-                <MenuItem  onClick={()=>{
-                  handleCloseNavMenu()
-                  
-            localStorage.clear()
-            
-          }} >
-                  <Typography textAlign="center">Log out</Typography>
-                </MenuItem>
-                </Link>
-
+             
                 
              
-            </Menu></>:<></>}
+            </Menu> */}</>:<></>}
         
       </Toolbar>
      

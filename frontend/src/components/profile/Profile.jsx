@@ -30,18 +30,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 
 const defaultTheme = createTheme();
@@ -106,7 +94,7 @@ HandelRender()
          
         <Paper sx={{p:2}} elevation={0}>
        
-        <Card sx={{ display: 'flex' }}>
+        <Card sx={{p:2, display: 'flex' }}>
             {/* style={{height:"30% ",width:"25%",borderRadius:"50%"}}  src='https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1705445009~exp=1705445609~hmac=bbd49859dfa90a750e4483dc9c7f01157951398ea6d26eb69e798584c3d99749' */}
           <CardMedia
         component="img"
@@ -171,10 +159,10 @@ return(<Paper key={i} sx={{width:"100%", height:"40%"}} elevation={2}>
                 navigate("/dashboard")
               }}
                 variant="contained">Explore Opportunities</Button>
-              <Button variant="outlined" onClick={()=>{
+            <Link href="/dashboard"> <Button variant="outlined" onClick={()=>{
                 localStorage.clear()
                 
-              }} >Log Out </Button>
+              }} >Log Out </Button></Link> 
             </Stack>
           </Container>
         </Box>
@@ -189,22 +177,7 @@ return(<Paper key={i} sx={{width:"100%", height:"40%"}} elevation={2}>
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+     
     </ThemeProvider>
   );
 }
