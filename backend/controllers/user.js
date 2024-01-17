@@ -60,7 +60,9 @@ console.log('result here', result)
                     last:result.lastName,
                     country:result.country,
                     role: result.role,
-                    nameRole:result.role.role
+                    nameRole:result.role.role,
+                    age:result.age
+
                 }
                 console.log('payload', payload.role.permissions)
                 const userToken =jwt.sign(payload,process.env.SECRET,options)

@@ -2,6 +2,8 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import { useEffect,useState,useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -22,6 +24,11 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { tokenContext } from '../../App';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 
 function Copyright() {
   return (
@@ -40,6 +47,8 @@ function Copyright() {
 const defaultTheme = createTheme();
 
 export default function Profile() {
+  const navigate =useNavigate()
+
     const [userinfo, setUserinfo] = useState({})
     const [allDonation, setAllDonation] = useState([])
     const { edit,
@@ -93,28 +102,36 @@ HandelRender()
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth="md">
          
-        <Paper sx={{p:2, height:"50vh"}} elevation={0}>
+        <Paper sx={{p:2}} elevation={0}>
        
         <Card sx={{ display: 'flex' }}>
             {/* style={{height:"30% ",width:"25%",borderRadius:"50%"}}  src='https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1705445009~exp=1705445609~hmac=bbd49859dfa90a750e4483dc9c7f01157951398ea6d26eb69e798584c3d99749' */}
           <CardMedia
         component="img"
-        sx={{height:"30% ",width:"30%",borderRadius:"50%" }}
+        sx={{height:"25% ",width:"25%",borderRadius:"50%",borderRight:"grey solid"  }}
         image='https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1705445009~exp=1705445609~hmac=bbd49859dfa90a750e4483dc9c7f01157951398ea6d26eb69e798584c3d99749'
         alt="Live from space album cover"
       />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{  p:1,m :"20px",flex: '0 auto' }}>
+      <Box sx={{ border:"solid", borderColor: 'divider',width : "100%",display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ p:1,m :"20px",flex: '0 auto' }}>
          
-         <Typography>{userinfo.author} </Typography>
+         <Typography variant="h5" sx={{ width : "100%", border:"none ",borderColor: 'divider',m:"3px"}}> <span style={{fontWeight:"bold"}}>Name :  </span>{userinfo.author} { userinfo.last}  </Typography>
+         <Typography variant="h5" sx={{m:"3px"}}> <span style={{fontWeight:"bold"}}>Country : </span>{userinfo.country} </Typography>
+         <Typography variant="h5" sx={{m:"3px"}}> <span style={{fontWeight:"bold"}}>Age : </span>{userinfo.age} </Typography>
+         <Typography variant="h5"component="h2"sx={{m:"3px"}}> <span style={{fontWeight:"bold"}}>Role : </span>{userinfo.nameRole} </Typography>
+
+
         </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
           
          
         
         </Box>
+
+
+        
       </Box>
       
     </Card>
@@ -122,7 +139,27 @@ HandelRender()
         </Paper>
        
       
-           
+           <Paper>
+<Box>
+<Typography variant='h6'fontWeight={"bold"}> Your Donations</Typography>
+    {allDonation.length?<> {allDonation.map((don,i)=>{
+
+return(<Paper key={i} sx={{width:"100%", height:"40%"}} elevation={2}>
+
+      <Typography variant='h6' m={1} p={1}/* height={"100px"} */ >
+     <span style={{ margin:"10px",padding:"10px",fontWeight:"bold"}}> {don.donor.firstName}</span> <br/>
+
+     <span style={{fontWeight:"bold"}}>Amount : </span> {don.amount} JOD
+      </Typography>
+
+</Paper>)
+
+})}
+</>: <><Typography textAlign={"center"}>No Donation Yet</Typography></>}
+               
+</Box>
+
+           </Paper>
           
             <Stack
               sx={{ pt: 4 }}
@@ -130,8 +167,14 @@ HandelRender()
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Button onClick={()=>{
+                navigate("/dashboard")
+              }}
+                variant="contained">Explore Opportunities</Button>
+              <Button variant="outlined" onClick={()=>{
+                localStorage.clear()
+                
+              }} >Log Out </Button>
             </Stack>
           </Container>
         </Box>

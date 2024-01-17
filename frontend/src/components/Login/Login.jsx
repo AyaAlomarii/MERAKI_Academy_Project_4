@@ -16,7 +16,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 function Copyright(props) {
   return (
     <Typography
@@ -40,7 +41,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const [message, setMessage] = useState({});
+  const [message, setMessage] = useState(null);
   const [logInInfo, setLogInInfo] = useState({});
   //req.token.role.permissions
   const navigate =useNavigate()
@@ -54,10 +55,7 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("isLoggedIn", true);
-        setMessage({
-          messageShow: res.data.message,
-          status: true,
-        });
+        
         setEdit(res.data.role._id)
         setUserId(res.data.userId)
         localStorage.setItem("userId",res.data.userId)
@@ -66,16 +64,13 @@ export default function Login() {
         console.log("res", res.data.message);
        // console.log("first", res.data.token);
         setToken(res.data.token);
-
+        navigate("/dashboard")
         setIsLoggedIn(true);
 
         // navigate("/dashboard").per
       })
       .catch((err) => {
-        setMessage({
-          messageShow: err.response.data.message,
-          status: false,
-        });
+        setMessage(err.response.data.message);
         localStorage.setItem("isLoggedIn", false);
         setIsLoggedIn(false);
         console.log("err", err);
@@ -158,7 +153,10 @@ export default function Login() {
                 </Link>
               </Grid>
             </Grid>
-            {<h3>{message.messageShow}</h3>}
+            {message?<>  <Stack sx={{ width: '100%' }} spacing={2}>
+      <Alert severity="error">{message}</Alert>
+    </Stack></>:<></>}
+          
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
