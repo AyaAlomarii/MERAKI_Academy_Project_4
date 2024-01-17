@@ -19,10 +19,40 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+
+import { deepPurple } from '@mui/material/colors';
+import Avatar from '@mui/material/Avatar';
+
+
+const customTheme = createTheme({
+  palette: {
+
+    primary: {
+      backgroundColor:"linear-gradient(to top, #d9d9d9, #b6b6c9, #8e95ba, #5e77ac, #055c9d)",
+      main: '#1976d2',
+    light: '#42a5f5',
+    },
+   
+  },
+});
+
+const StyledAvatar = styled(Card)`
+  ${({ theme }) => `
+  cursor: pointer;
+  background-color: ${theme.palette.primary.main};
+  transition: ${theme.transitions.create(['background-color', 'transform'], {
+    duration: theme.transitions.duration.standard,
+  })};
+  &:hover {
+    background-color: ${theme.palette.secondary.main};
+    transform: scale(1.08);
+  }
+  `}
+`;
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -91,7 +121,7 @@ console.log('first', localStorage.getItem("token"))
   }, []);
   const navigate = useNavigate();
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={customTheme}>
       <CssBaseline />
     
       <main>
@@ -165,8 +195,11 @@ console.log('first', localStorage.getItem("token"))
           {/* End hero unit */}
           <Grid container spacing={4}>
             {allInitiative.map((ele, i) => (
-              <Grid item key={i} xs={12} sm={6} md={4}>
-                <Card
+              <Grid   onClick={(e) => {
+                setId(ele._id)
+                  navigate(`/initiativeDetails/${ele._id}`);
+                }} item key={i} xs={12} sm={6} md={4}>
+              <StyledAvatar>  <Card theme={customTheme}
                   sx={{
                     height: "100%",
                     display: "flex",
@@ -211,6 +244,7 @@ console.log('first', localStorage.getItem("token"))
         }}size="small">Delete</Button></>:<></>}</>}
                   </CardActions>
                 </Card>
+                </StyledAvatar>
               </Grid>
             ))}
           </Grid>

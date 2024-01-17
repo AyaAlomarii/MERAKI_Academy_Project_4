@@ -24,8 +24,8 @@ const [id, setId] = useState(localStorage.getItem("id") || "")
 
 const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
   return (
-    <>
-      <tokenContext.Provider
+    <div className="all">
+      <tokenContext.Provider 
         value={{edit,
           setEdit,
           token,
@@ -68,7 +68,7 @@ const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
 
 
       </tokenContext.Provider>
-    </>
+    </div>
   );
 }
 

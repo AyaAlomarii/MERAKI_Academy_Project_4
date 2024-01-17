@@ -13,6 +13,8 @@ import { tokenContext } from "../../App";
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 const pages = ['Products', 'Pricing', 'Blog'];
+
+
 function Navbar() {
 
 
@@ -106,9 +108,11 @@ function Navbar() {
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
                 </Link>
+                <Link href="/main">
                 <MenuItem  onClick={handleCloseNavMenu}  >
-                  <Typography textAlign="center">Donate</Typography>
+                 <Typography textAlign="center">About Us</Typography>
                 </MenuItem>
+                </Link>
                 <Link href="/dashboard">
                 <MenuItem  onClick={()=>{
                   handleCloseNavMenu()
