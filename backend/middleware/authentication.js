@@ -9,6 +9,7 @@ const authentication =async (req,res,next)=>{
         const verifiedToken = await jwt.verify(token, process.env.SECRET);
         console.log('parsedToken : ', verifiedToken);
         req.token = verifiedToken
+        
         next()
     }
     catch(err){

@@ -45,7 +45,7 @@ export default function Login() {
   //req.token.role.permissions
   const navigate =useNavigate()
   const { edit,
-    setEdit,token, setToken, setIsLoggedIn, isLoggedIn } =
+    setEdit,token, setToken, setIsLoggedIn, isLoggedIn ,userId, setUserId} =
     useContext(tokenContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,6 +59,8 @@ export default function Login() {
           status: true,
         });
         setEdit(res.data.role._id)
+        setUserId(res.data.userId)
+        localStorage.setItem("userId",res.data.userId)
         localStorage.setItem("edit",res.data.role._id)
           console.log('d', res.data.role._id)
         console.log("res", res.data.message);

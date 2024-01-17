@@ -57,8 +57,10 @@ console.log('result here', result)
                 const payload = {
                     userId:result.id,
                     author:result.firstName,
+                    last:result.lastName,
                     country:result.country,
-                    role: result.role
+                    role: result.role,
+                    nameRole:result.role.role
                 }
                 console.log('payload', payload.role.permissions)
                 const userToken =jwt.sign(payload,process.env.SECRET,options)
@@ -67,7 +69,10 @@ console.log('result here', result)
                     success: true,
                     message: "Valid login credentials",
                     token: userToken,
-                    role:result.role
+                    role:result.role,
+                    author:result.firstName,
+                    userId:result.id,
+                    
                     })
             }
         }

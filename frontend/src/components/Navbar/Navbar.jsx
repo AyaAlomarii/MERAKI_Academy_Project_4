@@ -101,10 +101,11 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              
+              <Link href={`/profile`}>
                 <MenuItem  onClick={handleCloseNavMenu}  >
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
+                </Link>
                 <MenuItem  onClick={handleCloseNavMenu}  >
                   <Typography textAlign="center">Donate</Typography>
                 </MenuItem>
@@ -124,24 +125,7 @@ function Navbar() {
             </Menu></>:<></>}
         
       </Toolbar>
-      <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
-      >
-      
-       {/*    <Link
-            color="inherit"
-            noWrap
-            
-            variant="body2"
-            
-            sx={{ p: 1, flexShrink: 0 }}
-          >
-          <Button size="small"></Button>
-          </Link> */}
-       
-      </Toolbar>
+     
     </React.Fragment>
   );
 }

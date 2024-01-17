@@ -7,7 +7,7 @@ const authorization=require("../middleware/authorization")
 
 
 // endpoint for the get all donations by id
-donationRouter.get("/:objectId/user" ,getAllDonationByUserId);
+donationRouter.get("/:objectId/user" ,authentication,getAllDonationByUserId);
 
 //export it
 module.exports = donationRouter;

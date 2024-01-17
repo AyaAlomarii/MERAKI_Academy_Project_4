@@ -1,13 +1,15 @@
 const donationModel=require("../models/donationSchema")
-
+const userMosel=require("../models/userSchema")
 
 
 const getAllDonationByUserId =(req ,res)=>{
     const {objectId}=req.params
     console.log('first', objectId)
+   
+    
     donationModel.find({ donor: objectId })
     .populate("donor")
-
+    
     .then((result)=>{
         console.log('result', result)
         if(!result.length){
@@ -22,6 +24,7 @@ const getAllDonationByUserId =(req ,res)=>{
                 success: true,
                 message: `All The donations made by  => ${objectId} `,
                 donation: result,
+                token: req.token
                 });
         }
 

@@ -55,7 +55,7 @@ export default function Dashboard() {
 
 
 
-useState
+
   const HandelRender = () => {
     axios
       .get(`http://localhost:5000/initiative/`)

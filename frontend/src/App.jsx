@@ -21,6 +21,8 @@ function App() {
   const [allInitiative, setAllInitiative] = useState([]);
   const [edit, setEdit] = useState(localStorage.getItem("edit") || "")
 const [id, setId] = useState(localStorage.getItem("id") || "")
+
+const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
   return (
     <>
       <tokenContext.Provider
@@ -32,7 +34,8 @@ const [id, setId] = useState(localStorage.getItem("id") || "")
           setIsLoggedIn,
           allInitiative,
           setAllInitiative,
-          setId
+          setId ,
+          userId, setUserId
         }}
       >
         <Navbar />
