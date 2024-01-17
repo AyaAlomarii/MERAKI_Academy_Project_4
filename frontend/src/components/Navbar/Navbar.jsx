@@ -52,8 +52,9 @@ function Navbar() {
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Link href="/main">
         <Button size="medium"><img style={{width:"60px",height:"60px"}}
-        src="https://i.imgur.com/34F1rTZ.png" alt="" /></Button>
+        src="https://i.imgur.com/34F1rTZ.png" alt="" /></Button></Link>
         <Typography
           component="h2"
           variant="h5"

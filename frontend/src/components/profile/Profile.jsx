@@ -98,8 +98,8 @@ HandelRender()
             {/* style={{height:"30% ",width:"25%",borderRadius:"50%"}}  src='https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1705445009~exp=1705445609~hmac=bbd49859dfa90a750e4483dc9c7f01157951398ea6d26eb69e798584c3d99749' */}
           <CardMedia
         component="img"
-        sx={{height:"25% ",width:"25%",borderRadius:"50%",borderRight:"grey solid"  }}
-        image='https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1705445009~exp=1705445609~hmac=bbd49859dfa90a750e4483dc9c7f01157951398ea6d26eb69e798584c3d99749'
+        sx={{height:"25% ",width:"25%",borderRadius:"50%",borderRight:"grey solid",m:"10px"  }}
+        image='https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=640&t=st=1705445009~exp=1705445609~hmac=bbd49859dfa90a750e4483dc9c7f01157951398ea6d26eb69e798584c3d99749'
         alt="Live from space album cover"
       />
       <Box sx={{ border:"solid", borderColor: 'divider',width : "100%",display: 'flex', flexDirection: 'column' }}>
@@ -129,7 +129,7 @@ HandelRender()
       
            <Paper>
 <Box>
-<Typography variant='h6'fontWeight={"bold"}> Your Donations</Typography>
+<Typography m={1} p={1} variant='h6'fontWeight={"bold"}> Your Donations</Typography>
     {allDonation.length?<> {allDonation.map((don,i)=>{
 
 return(<Paper key={i} sx={{width:"100%", height:"40%"}} elevation={2}>
@@ -166,8 +166,15 @@ return(<Paper key={i} sx={{width:"100%", height:"40%"}} elevation={2}>
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
+        
+      </main>
+     
+    </ThemeProvider>
+  );
+}
+
+/* <Container sx={{ py: 8 }} maxWidth="md">
+          
           <Grid container spacing={4}>
             
               <Grid item xs={12} sm={6} md={4}>
@@ -175,9 +182,4 @@ return(<Paper key={i} sx={{width:"100%", height:"40%"}} elevation={2}>
               </Grid>
             
           </Grid>
-        </Container>
-      </main>
-     
-    </ThemeProvider>
-  );
-}
+        </Container> */
