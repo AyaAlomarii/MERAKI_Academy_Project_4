@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import {styled, createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -87,7 +88,7 @@ function Main() {
         src="https://i.imgur.com/34F1rTZ.png" alt="" />
 
 </Box>
-<Paper
+<Paper  elevation={0}
       sx={{
         position: 'relative',
        
@@ -104,10 +105,10 @@ function Main() {
       }}
     >
       
-<Box p={2} m={2} ><Typography variant="h4" align='center'>Khairah is Nonprofit Organization For Help Children.<br/>
+<Box p={2} m={2} sx={{  border:"#155fa0 solid", borderRadius:" 50px", boxShadow:" 1px 12px #155fa0"}} ><Typography variant="h4" align='center'>Khairah is Nonprofit Organization For Help Children.<br/>
 It is a long established fact that a reader will be distracted by thethe readable content off a page when looking at its layout point using Lorem Ipsum is that it has.</Typography></Box>
     </Paper>
-<Container sx={{ m:3,
+<Container sx={{ m:2,
   display:"grid",
  gridTemplateColumns:"1fr 1fr 1fr"
 }} >
@@ -139,7 +140,7 @@ t is a long established fact that reader distracted by the the readable content 
 
 </CardContent>
 </Card>
-<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto" ,textAlign:"center", m:1,height:"90%",boxShadow:"12px 12px 1px 1px #155fa0"}}>
+<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto" ,textAlign:"center", m:"auto",height:"90%",boxShadow:"12px 12px 1px 1px #155fa0"}}>
 <CardContent>
 <Typography align='center'>
 <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" className="bi bi-person-check-fill" viewBox="0 0 16 16">
