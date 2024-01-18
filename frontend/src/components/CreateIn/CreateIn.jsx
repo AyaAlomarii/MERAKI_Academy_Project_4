@@ -39,12 +39,13 @@ const [messageShow, setMessageShow] = useState({})
 const uploadImage = () => {
     const data = new FormData()
     data.append("file", image)
-    data.append("upload_preset", "tutorial")
-    data.append("cloud_name","breellz")
-    fetch("https://api.cloudinary.com/v1_1/dsyee94i/image/upload",{
+    data.append("upload_preset", "xaqyveks")
+    data.append("cloud_name","dsyee942i")
+    fetch("https://api.cloudinary.com/v1_1/dsyee942i/image/upload",{
     method:"post",
     body: data
-    })
+    })	
+
     .then(resp => resp.json())
     .then(data => {
     setUrl(data.url)
@@ -313,8 +314,8 @@ const uploadImage = () => {
 <button onClick={uploadImage}>Upload</button>
 </div>
 <div>
-<h1>Uploaded image will be displayed here</h1>
-<img  src={url}/>
+<h3>Uploaded image will be displayed here</h3>
+<img style={{width:"50%",height:"50%"}} src={url}/>
 </div>
               </Grid>
             
