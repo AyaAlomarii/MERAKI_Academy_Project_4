@@ -128,6 +128,11 @@ res.status(201).json({
     success: true,
     message: "Comment created",
     review: newReview,
+    token:req.token,
+    reviewer:{firstName:req.token.author,
+    lastName:req.token.last
+    }
+
 
     })
 }

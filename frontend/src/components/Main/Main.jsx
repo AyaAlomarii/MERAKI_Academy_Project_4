@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Fade } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -17,6 +19,7 @@ import {styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+
 function srcset(image, size, rows = 1, cols = 1) {
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -32,7 +35,7 @@ function Main() {
   return (
     <Container
         
-        maxWidth="lg"
+        maxWidth="xlg"
     >
     <Paper
       sx={{
@@ -115,6 +118,7 @@ function Main() {
   display:"grid",
  gridTemplateColumns:"1fr 1fr 1fr",
  gap:"12px"
+ ,mb:7
 }} >
 <Card sx={{  border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center" ,height:"100%",boxShadow:"2px 12px #155fa0, -0.5em  .4em   #155fa0"}}  >
 <CardContent>

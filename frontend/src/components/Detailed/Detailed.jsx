@@ -45,6 +45,9 @@ const defaultTheme = createTheme({ typography: {
     ].join(','),
   },});
 const Detailed = () => {
+  const [name, setName] = useState("")
+  const [lastName, setLastName] = useState("")
+
   const { id } = useParams()
   const [details, setDetails] = useState({})
   const [plan, setPlan] = useState([])
@@ -190,17 +193,17 @@ const [donationSent, setDonationSent] = useState(false)
                  Reviews:<br/>
                  </Typography>
                  {review.length===0?<><Typography fontSize={"large"} sx={{  
-                  pt:2 }} > Be first to give us your review</Typography>
+                  pt:2 ,pb:1 }} > Be first to give us your review</Typography>
                  
                   </>:<> <Typography sx={{
-                  pt:2 }} component="h2" fontSize= "large" fontWeight="" ><br/> <br/>
+                   }} component="h2" fontSize= "large" fontWeight="" ><br/> 
                   
                   
 
                     {review.map((ele,i)=>{
                      return <div key={i}>
-                      <Typography  component="h2" fontSize= "large" fontWeight="bold" sx={{  borderBottom: 1, borderColor: 'divider',
-                  pt:2 }}>
+                      <Typography  component="h2" fontSize= "large" fontWeight="bold" sx={{  borderBottom: 1, borderColor: 'divider'
+                   }}>
                       {ele.reviewer.firstName} {ele.reviewer.lastName}
                  </Typography>
                        {ele.review}</div>
@@ -226,9 +229,13 @@ const [donationSent, setDonationSent] = useState(false)
        authorization: `Bearer ${localStorage.getItem("token")}`,
      },
    }).then((res)=>{
-    console.log('first', res.data.review.review)
-    // setReview([...review,res.data.review]) 
-       console.log('res', res.data.review)
+   setNewReview({...newReview,reviewer:res.data.reviewer})
+   
+   
+   
+        
+            console.log(res.data.reviewer);
+      
    }).catch((err)=>{
        console.log('err', err)
    })
