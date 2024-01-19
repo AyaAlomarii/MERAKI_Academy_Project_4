@@ -32,7 +32,7 @@ const customTheme = createTheme({
   palette: {
 
     primary: {
-      backgroundColor:"linear-gradient(to top, #d9d9d9, #b6b6c9, #8e95ba, #5e77ac, #055c9d)",
+     
       main: '#1976d2',
     light: '#42a5f5',
     },
@@ -47,12 +47,10 @@ const customTheme = createTheme({
 const StyledAvatar = styled(Card)`
   ${({ theme }) => `
   cursor: pointer;
-  background-color: ${theme.palette.primary.main};
   transition: ${theme.transitions.create(['background-color', 'transform'], {
     duration: theme.transitions.duration.standard,
   })};
   &:hover {
-    background-color: ${theme.palette.secondary.main};
     transform: scale(1.08);
   }
   `}
@@ -146,7 +144,7 @@ console.log('first', localStorage.getItem("token"))
               color="text.primary"
               gutterBottom
             >
-              All opportunities
+              Explore opportunities
             </Typography>
             <Typography
               variant="h5"
@@ -154,9 +152,7 @@ console.log('first', localStorage.getItem("token"))
               color="text.secondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+             "Your support matters! Volunteer with us to make a positive impact and be part of meaningful change."
             </Typography>
            
    
@@ -220,24 +216,26 @@ console.log('first', localStorage.getItem("token"))
           
           <Grid container spacing={4}>
             {allInitiative.map((ele, i) => (
-              <Grid   onClick={(e) => {
-                setId(ele._id)
-                  navigate(`/initiativeDetails/${ele._id}`);
-                }} item key={i} xs={12} sm={6} md={4}>
-              <StyledAvatar>  <Card theme={customTheme}
+        
+              <Grid  item key={i} xs={12} sm={6} md={4}>
+              <StyledAvatar  sx={{borderRadius:" 50px",}}>  <Card theme={customTheme}
                   sx={{
+                    
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
                   }}
                 >
-                  <CardMedia
+                  <CardMedia onClick={(e) => {
+                setId(ele._id)
+                  navigate(`/initiativeDetails/${ele._id}`);
+                }} 
                     component="div"
                     sx={{
                       // 16:9
                       pt: "56.25%",
                     }}
-                    image={ele.img}
+                     image={ele.img}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">

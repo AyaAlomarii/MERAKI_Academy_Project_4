@@ -98,7 +98,7 @@ const [donationSent, setDonationSent] = useState(false)
         <Container sx={{justifyContent:"center"}}  maxWidth="lg">
         <Grid item sx={{justifyItems:"center"}} >
               <Card 
-                sx={{ margin:"auto", pt:5, width:"80%",height: '60%', display: 'flex', flexDirection: 'column' ,alignSelf:"center" }}
+                sx={{ borderRadius:" 50px",margin:"auto",mt:3, p:5, width:"80%",height: '60%', display: 'flex', flexDirection: 'column' ,alignSelf:"center" }}
               >
                 <CardMedia
                   component="div"
@@ -184,7 +184,7 @@ const [donationSent, setDonationSent] = useState(false)
                  {review.length===0?<>
                   Be first to give us your review
                   </>:<> <Typography sx={{
-                  pt:2 }} component="h2" fontSize= "large" fontWeight="" >
+                  pt:2 }} component="h2" fontSize= "large" fontWeight="" ><br/> <br/>
                   
                   
 
@@ -198,7 +198,7 @@ const [donationSent, setDonationSent] = useState(false)
                    })} 
                   
                   </Typography></>}
-                  <TextField
+                  <TextField  sx={{display:"block"}}
            onChange={(e)=>{
 
             setNewReview({...newReview,review:e.target.value})
@@ -207,7 +207,7 @@ const [donationSent, setDonationSent] = useState(false)
           label="Write Your Review Here"
           
           variant="standard"
-        /><br/>{/* http://localhost:5000/initiative/65a1b7e683eb6f048f47adec/review */}
+        />
                   <Button  onClick={()=>{
    
    console.log('new', newReview)
@@ -224,7 +224,7 @@ const [donationSent, setDonationSent] = useState(false)
        console.log('err', err)
    })
      
-   }} size="small" sx={{ mt:2 }}variant="outlined">Add Review</Button>
+   }} size="small" sx={{ mt:3 }}variant="outlined">Add Review</Button>
                 </CardContent>
                
               </Card>

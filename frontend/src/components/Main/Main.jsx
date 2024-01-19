@@ -38,8 +38,8 @@ function Main() {
        
         color: '#fff',
         m: 4,
-        filter: "blur(1px)",
-        WebkitFilter: "blur(2px)",
+        filter: "blur(0.5px)",
+        WebkitFilter: "blur(px)",
         width:"100wv",
         height:"70vh",
         backgroundSize: 'cover',
@@ -60,12 +60,13 @@ function Main() {
                 fontWeight: "bold",
               //  border: "3px solid #f1f1f1",
                 position: "absolute",
-        borderRadius:" 50px",
+                borderRadius:" 40px",
+
                 
                 top: "80%",
                 left: "50%",
                 transform:" translate(-50%, -50%)",
-                ZIndex: "2",
+                ZIndex: "3",
                 width: "50%",
                 padding: "20px",
                 textAlign: "center"
@@ -105,14 +106,14 @@ function Main() {
       }}
     >
       
-<Box p={2} m={2} sx={{  border:"#155fa0 solid", borderRadius:" 50px", boxShadow:" 1px 12px #155fa0"}} ><Typography variant="h4" align='center'>Khairah is Nonprofit Organization For Help Children.<br/>
-It is a long established fact that a reader will be distracted by thethe readable content off a page when looking at its layout point using Lorem Ipsum is that it has.</Typography></Box>
+<Box align="center" p={2} m={2} sx={{  border:"#155fa0 solid",borderRadius:"30px", boxShadow:" 1px 12px #155fa0"}} ><Typography variant="h5" align='center'>Jood is a nonprofit organization committed to making a difference through volunteerism, donations, and impactful charity initiatives. Be a part of Jood's mission for positive change.</Typography></Box>
     </Paper>
 <Container sx={{ m:2,
   display:"grid",
- gridTemplateColumns:"1fr 1fr 1fr"
+ gridTemplateColumns:"1fr 1fr 1fr",
+ gap:"12px"
 }} >
-<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto", mr:"3px",textAlign:"center", m:1,height:"90%",boxShadow:"2px 12px #155fa0, -0.5em  .4em   #155fa0"}}  >
+<Card sx={{  border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center" ,height:"100%",boxShadow:"2px 12px #155fa0, -0.5em  .4em   #155fa0"}}  >
 <CardContent>
 <Typography  align='center'>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lightbulb-fill" viewBox="0 0 16 16">
@@ -120,27 +121,27 @@ It is a long established fact that a reader will be distracted by thethe readabl
 </svg><br/>
 
 Our Vision<br/>
-t is a long established fact that reader distracted by the the readable content off page looking at its layout point.
+Jood envisions a kinder world through volunteerism and charity, creating lasting positive change. Join us in shaping a brighter future.
 </Typography>
 
 </CardContent>
 
 
 </Card>
-<Card sx={{ border:"#155fa0 solid",borderRadius:"20px",m:"auto" ,textAlign:"center",m:1,backgroundColor:"primary" , boxShadow:" 1px 12px #155fa0"}} >
+<Card sx={{  border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center",mt:"1" ,height:"100%", boxShadow:" 1px 12px #155fa0"}} >
 <CardContent>
 <Typography align='center'>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
 </svg><br/>
-  Contact Us<br/>
-t is a long established fact that reader distracted by the the readable content off page looking at its layout point.
+Get involved<br/>
+Get involved with Jood! Volunteer, donate, or join our impactful initiatives. Be a part of positive change today.
   
 </Typography>
 
 </CardContent>
 </Card>
-<Card sx={{ border:"#155fa0 solid", borderRadius:"20px",m:"auto" ,textAlign:"center", m:"auto",height:"90%",boxShadow:"12px 12px 1px 1px #155fa0"}}>
+<Card sx={{ border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center",mt:"1" ,height:"100%",boxShadow:"12px 12px 1px 1px #155fa0"}}>
 <CardContent>
 <Typography align='center'>
 <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" className="bi bi-person-check-fill" viewBox="0 0 16 16">
@@ -148,7 +149,7 @@ t is a long established fact that reader distracted by the the readable content 
   <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
 </svg><br/>
   Our Mission<br/>
-t is a long established fact that reader distracted by the the readable content off page looking at its layout point.
+  At Jood, we ignite kindness through volunteerism and impactful charity initiatives, creating a brighter future for all.
   
 </Typography>
 
