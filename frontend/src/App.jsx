@@ -3,6 +3,8 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TextField from '@mui/material/TextField';
 
+
+
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -137,7 +139,7 @@ const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
         
 {/* Footer */}
 <Box sx={{height:"20%", bgcolor: 'background.paper',marginTop:"30px", p: 1, borderTop: 2, borderColor: 'divider'}} component="footer">
-  <Container  sx={{display:"grid", height:"20%",gridTemplateColumns:"1fr 1fr 1fr 2fr "}}>
+  <Container  sx={{display:"grid", height:"10%",gridTemplateColumns:"1fr 1fr 1fr 2fr ",gap:"20px",mb:"5px"}}>
 <Box align="center">
 
     <Box>

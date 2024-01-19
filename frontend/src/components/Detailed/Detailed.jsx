@@ -103,6 +103,7 @@ const [donationSent, setDonationSent] = useState(false)
                 <CardMedia
                   component="div"
                   sx={{
+                    borderRadius:" 50px",
                     // 16:9
                     width:"100%",
                     height:"100%",
@@ -111,56 +112,63 @@ const [donationSent, setDonationSent] = useState(false)
                   image={details.img}
                 />
                 <CardContent  sx={{ flexGrow: 1 }}>
-                  <Typography fontWeight="bold" gutterBottom variant="h5" component="h2">
+                  <Typography sx={{ pt:2}} fontWeight="bold" gutterBottom variant="h5" component="h2">
                    {details.name}
                   </Typography>
                   <Typography fontSize= "large" component="h2" sx={{ pt:2 }}>
                   {details.description}
                   </Typography>
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                 City: {details.city}
+                 City:  <span style={{fontWeight:"lighter"}}>{details.city}</span> 
                   </Typography>
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                 Duration: {details.duration}
+                 Duration: <span style={{fontWeight:"lighter"}}>{details.duration}</span>
                   </Typography>
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                  Target Audience: {plan.targetAudience}
+                  Target Audience: <span style={{fontWeight:"lighter"}}>{plan.targetAudience}</span>
                   </Typography>
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                 End Date: {plan.endDate}<br/>
-                 Start Date: {plan.startDate}
+                 Start Date: <span style={{fontWeight:"lighter"}}>{plan.startDate}</span>
                   </Typography>
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                 Target Amount: {plan.targetAmount} JOD
+                 End Date: <span style={{fontWeight:"lighter"}}>{plan.endDate}</span>
+                  </Typography>
+                  <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
+                 Target Amount: <span style={{fontWeight:"lighter"}}>{plan.targetAmount} JOD</span> 
                  </Typography>
 
                  <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                 Current Amount: {details.currentAmount} JOD
+                 Current Amount:  <span style={{fontWeight:"lighter"}}>{details.currentAmount} JOD</span> 
                   </Typography>
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                  Volunteer Limit: {details.volunteerLimit} 
+                  Volunteer Limit: <span style={{fontWeight:"lighter"}}>{details.volunteerLimit} </span>
                  </Typography>
                  <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
-                 Volunteer Requirements:{/* currentAmount */}
+                 Volunteer Requirements:
+
                  </Typography>
                  
-                 <Typography component="h2" fontSize= "large" fontWeight="" >
-                 Age Group: {vol.ageGroup} <br/>
-                 Skills: {volReq.map((ele,i)=>{
-                  return <div key={i}>{ele}</div>
+                 <Typography sx={{ pt:2 }}component="h2" fontSize= "large" fontWeight="" ><span style={{fontWeight:"bold"}}>Age Group:  </span>
+                  {vol.ageGroup} <br/>
+                
+                  
+                 </Typography>
+                 <Typography component="h2" fontSize= "large"  sx={{ pt:2 }}>
+                 <span style={{fontWeight:"bold"}}>Skills: </span>{volReq.map((ele,i)=>{
+                  return <div style={{display:"initial"}} key={i}>{ele}</div>
                  })}
                      
-                  
+
                  </Typography>
 
                   <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{ pt:2 }}>
                  Duties:{/* currentAmount */}
                  </Typography>
                  
-                 <Typography component="h2" fontSize= "large" fontWeight="" >
+                 <Typography  component="h2" fontSize= "large" fontWeight="" >
                  <ul>
                   {duties.map((ele,i)=>{
-                    return <li  key={i}>{ele}</li>
+                    return <li style={{padding:"3px"}} key={i}>{ele}</li>
                   })}
                  </ul>
                  </Typography>
@@ -172,17 +180,18 @@ const [donationSent, setDonationSent] = useState(false)
                  <Typography component="h2" fontSize= "large" fontWeight="" >
                  <ul>
                   {schedule.map((ele,i)=>{
-                    return <li  key={i}>{ele}</li>
+                    return <li style={{padding:"3px"}}  key={i}>{ele}</li>
                   })}
                  </ul>
                  </Typography>
                  
                  <Typography component="h2" fontSize= "large" fontWeight="bold" sx={{  
                   pt:2 }}>
-                 Reviews:
+                 Reviews:<br/>
                  </Typography>
-                 {review.length===0?<>
-                  Be first to give us your review
+                 {review.length===0?<><Typography fontSize={"large"} sx={{  
+                  pt:2 }} > Be first to give us your review</Typography>
+                 
                   </>:<> <Typography sx={{
                   pt:2 }} component="h2" fontSize= "large" fontWeight="" ><br/> <br/>
                   

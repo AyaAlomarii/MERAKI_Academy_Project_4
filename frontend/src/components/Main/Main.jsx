@@ -2,6 +2,9 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
@@ -116,9 +119,7 @@ function Main() {
 <Card sx={{  border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center" ,height:"100%",boxShadow:"2px 12px #155fa0, -0.5em  .4em   #155fa0"}}  >
 <CardContent>
 <Typography  align='center'>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lightbulb-fill" viewBox="0 0 16 16">
-  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
-</svg><br/>
+<TipsAndUpdatesIcon/><br/>
 
 Our Vision<br/>
 Jood envisions a kinder world through volunteerism and charity, creating lasting positive change. Join us in shaping a brighter future.
@@ -131,9 +132,8 @@ Jood envisions a kinder world through volunteerism and charity, creating lasting
 <Card sx={{  border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center",mt:"1" ,height:"100%", boxShadow:" 1px 12px #155fa0"}} >
 <CardContent>
 <Typography align='center'>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-</svg><br/>
+<VolunteerActivismIcon/>
+<br/>
 Get involved<br/>
 Get involved with Jood! Volunteer, donate, or join our impactful initiatives. Be a part of positive change today.
   
@@ -144,10 +144,7 @@ Get involved with Jood! Volunteer, donate, or join our impactful initiatives. Be
 <Card sx={{ border:"#155fa0 solid", borderRadius:"30px",m:"auto" ,textAlign:"center",mt:"1" ,height:"100%",boxShadow:"12px 12px 1px 1px #155fa0"}}>
 <CardContent>
 <Typography align='center'>
-<svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" className="bi bi-person-check-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
-  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-</svg><br/>
+<AssessmentIcon/><br/>
   Our Mission<br/>
   At Jood, we ignite kindness through volunteerism and impactful charity initiatives, creating a brighter future for all.
   

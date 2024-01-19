@@ -187,8 +187,8 @@ console.log('first', localStorage.getItem("token"))
 
           </Container>
           <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs  textColor="text.primary" value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
+      <Box sx={{ fontSize:"large",borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs sx={{margin:5,mb:0}} textColor="text.primary" value={TabValue} onChange={(e)=>{}} aria-label="basic tabs example">
           
           <Tab  theme={customTheme}  size="medium" label="ALL "  onClick={()=>{
             setTabValue(0)
