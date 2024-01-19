@@ -146,7 +146,7 @@ const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <HomeIcon color="primary"/>
+        <Link href="/main">  <HomeIcon color="primary"/> </Link>
         </ListItemAvatar>
         <ListItemText
           primary="Home"
@@ -154,15 +154,15 @@ const [userId, setUserId] = useState(localStorage.getItem("userId") || "")
       </ListItem>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <ExploreIcon color="primary"/>
-        </ListItemAvatar>
+        <Link href="/dashboard"> <ExploreIcon color="primary"/>
+        </Link>  </ListItemAvatar>
         <ListItemText
           primary="Initiative"
          />
       </ListItem>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <AccountCircleIcon color="primary"/>
+         <Link href="/login"> <AccountCircleIcon color="primary"/></Link>
         </ListItemAvatar>
         <ListItemText
           primary="Sign In"
