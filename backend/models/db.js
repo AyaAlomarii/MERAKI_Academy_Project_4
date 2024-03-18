@@ -6,5 +6,5 @@ mongoose
     console.log("DB Ready To Use");
 })
 .catch((err) => {
-    console.log(err);
+    console.log("here",err);
 });
