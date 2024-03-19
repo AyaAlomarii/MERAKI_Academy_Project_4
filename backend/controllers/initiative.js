@@ -1,14 +1,7 @@
 
-
-
 const initiativeModel=require("../models/initiativeSchema")
 const reviewModel=require("../models/reviewSchema")
 const donationModel=require("../models/donationSchema")
-
-
-/* const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken"); */
-
 
 
 // 1. this function to create an Initiative
