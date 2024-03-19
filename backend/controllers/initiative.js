@@ -1,5 +1,7 @@
 
-const initiativeModel=require("../models/initiativeSchema.js")
+
+
+const initiativeModel=require("../../backend/models/initiativeSchema")
 const reviewModel=require("../models/reviewSchema")
 const donationModel=require("../models/donationSchema")
 
